@@ -1,0 +1,209 @@
+Return-Path: <astrid.lagreid@ntnu.no>
+Received: from imap01.ebi.ac.uk ([unix socket])
+	 by imap01.ebi.ac.uk (Cyrus v2.3.16-Fedora-RPM-2.3.16-6.el6_2.5) with LMTPA;
+	 Tue, 19 Sep 2017 06:50:00 +0100
+X-Sieve: CMU Sieve 2.3
+Received: from smtp06.ebi.ac.uk (smtp06.ebi.ac.uk [193.62.196.49])
+	by imap01.ebi.ac.uk (8.14.4/8.14.4) with ESMTP id v8J5o0vj024463
+	for <pporras@imap01.ebi.ac.uk>; Tue, 19 Sep 2017 06:50:00 +0100
+Received: from hx-mx1.ebi.ac.uk (mx1.ebi.ac.uk [193.62.195.238])
+	by smtp06.ebi.ac.uk (8.13.8/8.13.8) with ESMTP id v8J5o0UZ026526
+	for <pporras@ebi.ac.uk>; Tue, 19 Sep 2017 06:50:00 +0100
+Received: from hx-mx1.ebi.ac.uk (localhost.localdomain [127.0.0.1])
+	by localhost (Email Security Appliance) with SMTP id 9428C22D6A7_9C0B008B
+	for <pporras@ebi.ac.uk>; Tue, 19 Sep 2017 05:50:00 +0000 (GMT)
+Received: from mailgw01.it.ntnu.no (mailgw01.it.ntnu.no [129.241.56.174])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by hx-mx1.ebi.ac.uk (Sophos Email Appliance) with ESMTPS id C5F8322A53A_9C0B007F
+	for <pporras@ebi.ac.uk>; Tue, 19 Sep 2017 05:49:59 +0000 (GMT)
+Received: from localhost (localhost [127.0.0.1])
+	by mailgw01.it.ntnu.no (Postfix) with ESMTP id C43FA2415C4
+	for <pporras@ebi.ac.uk>; Tue, 19 Sep 2017 07:49:58 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mailgw01.it.ntnu.no
+Received: from mailgw01.it.ntnu.no ([127.0.0.1])
+	by localhost (mailgw01.it.ntnu.no [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gmNd47WJeXdl for <pporras@ebi.ac.uk>;
+	Tue, 19 Sep 2017 07:49:57 +0200 (CEST)
+Received: from it-ex13.win.ntnu.no (it-ex13.it.ntnu.no [IPv6:2001:700:300:3::148])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mailgw01.it.ntnu.no (Postfix) with ESMTPS id 8A1A7241557
+	for <pporras@ebi.ac.uk>; Tue, 19 Sep 2017 07:49:57 +0200 (CEST)
+Received: from it-ex12.win.ntnu.no (2001:700:300:3::147) by
+ it-ex13.win.ntnu.no (2001:700:300:3::148) with Microsoft SMTP Server (TLS) id
+ 15.0.1320.4; Tue, 19 Sep 2017 07:49:57 +0200
+Received: from it-ex12.win.ntnu.no ([fe80::981f:5d70:badf:174b]) by
+ it-ex12.win.ntnu.no ([fe80::981f:5d70:badf:174b%17]) with mapi id
+ 15.00.1320.000; Tue, 19 Sep 2017 07:49:57 +0200
+From: =?Windows-1252?Q?Astrid_L=E6greid?= <astrid.lagreid@ntnu.no>
+To: Pablo Porras <pporras@ebi.ac.uk>
+Subject: SV: TF experimental preparation
+Thread-Topic: TF experimental preparation
+Thread-Index: AdMuVlj2nxoewt5CSUa7LC17QpzS8ACGlZgAACaNImo=
+Date: Tue, 19 Sep 2017 05:49:57 +0000
+Message-ID: <1505800197082.54972@ntnu.no>
+References: <b7824af317f14d0b9dfe9a398b7f9cca@it-ex12.win.ntnu.no>,<2020a0d0-7031-c49e-84db-45384059b277@ebi.ac.uk>
+In-Reply-To: <2020a0d0-7031-c49e-84db-45384059b277@ebi.ac.uk>
+Accept-Language: nb-NO, en-US
+Content-Language: nb-NO
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+X-Ntnu-xOriginatingIp: [10.30.224.52]
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Sophos-SenderHistory: ip=129.241.56.174,fs=1005828,da=75451368,mc=59,sc=0,hc=59,sp=0,fso=1005828,re=0,sd=0,hd=2
+X-Sophos-ESA: [hx-mx1.ebi.ac.uk] 4.2.1.1, Antispam-Engine: 2.7.2.2107409, Antispam-Data: 2017.9.19.53615
+X-SEA-Spam: Gauge=IIIIIIII, Probability=8%, Report='
+ HTML_00_01 0.05, HTML_00_10 0.05, BODY_SIZE_5000_5999 0, BODY_SIZE_7000_LESS 0, DQ_S_H 0, IN_REP_TO 0, LEGITIMATE_SIGNS 0, MSG_THREAD 0, NO_URI_HTTPS 0, SPF_PASS 0, URI_WITH_PATH_ONLY 0, __ANY_URI 0, __CP_NAME_BODY 0, __CP_URI_IN_BODY 0, __CT 0, __CTE 0, __CT_TEXT_PLAIN 0, __DQ_IP_FSO_LARGE 0, __DQ_S_HIST_1 0, __DQ_S_HIST_2 0, __DQ_S_IP_MC_10_P 0, __FORWARDED_MSG 0, __FW_1LN_BOT_MSGID 0, __HAS_FROM 0, __HAS_MSGID 0, __IN_REP_TO 0, __MIME_TEXT_ONLY 0, __MIME_TEXT_P 0, __MIME_TEXT_P1 0, __MIME_VERSION 0, __MULTIPLE_URI_TEXT 0, __NO_HTML_TAG_RAW 0, __SANE_MSGID 0, __STOCK_PHRASE_7 0, __TO_MALFORMED_2 0, __TO_NAME 0, __TO_NAME_DIFF_FROM_ACC 0, __TO_REAL_NAMES 0, __URI_IN_BODY 0, __URI_NOT_IMG 0, __URI_NS , __URI_WITH_PATH 0'
+
+Hi Pablo,=0A=
+=0A=
+Thanks a lot for this!=0A=
+I hope to find time to work on this tomorrow - sorry that I'm not able to f=
+ind time earlier, but my schedule got a bit overcrowded these days=0A=
+=0A=
+Best wishes=0A=
+Astrid=0A=
+=0A=
+=0A=
+________________________________________=0A=
+Fra: Pablo Porras <pporras@ebi.ac.uk>=0A=
+Sendt: 18. september 2017 15:24=0A=
+Til: Astrid L=E6greid=0A=
+Emne: Re: TF experimental preparation=0A=
+=0A=
+Hi again,=0A=
+=0A=
+I have started working on the mappings and found some problems with the=0A=
+excel spreadsheet you sent me on Friday and also with some of the rules=0A=
+that were put together with Sandra before I started working on this. I=0A=
+need to have these issues solved before I can create a proper mapping=0A=
+from Scicura format to PSI-MI XML.=0A=
+=0A=
+Let's do your translation table first. I have been comparing your=0A=
+mappings for the TF representation with mine and there are still a few=0A=
+things that are not clear to me. I have attached a new comparison file=0A=
+for you to re-check. Here's a summary of the issues I found with the=0A=
+mappings:=0A=
+=0A=
+     1.- You propose no distinction between knock-down and knock-out of=0A=
+a given TF, but these can be distinguished using the PSI-MI cv. Although=0A=
+your mapping proposes using 'underexpressed level', there are child=0A=
+terms in the cv for both 'knock-down' and 'knock-out'. I would propose=0A=
+using the more specific terms rather than the parent.=0A=
+=0A=
+     2.- In many cases the Scicura term refers to purified protein and=0A=
+you have proposed using 'partially purified' instead of 'purified' in=0A=
+some -but not all- cases. For example, termID:280919 (recombinant=0A=
+mutated TF with HA tag purified from E.coli cell extract) has been=0A=
+mapped as 'partially purified'. However, termID:280920 (recombinant=0A=
+mutated TF with Biotin tag purified from E.coli cell extract) has not=0A=
+been mapped to anything at all. I imagine this is just an oversight, is=0A=
+there any reason why some cases have been mapped and others not? Also,=0A=
+what's the reason for using 'partially purified' instead of 'purified'?=0A=
+=0A=
+     3.- termID:206990 (knock down by siRNA interference with TF=0A=
+expression) has been mapped to 'subcellular preparation', but I cannot=0A=
+see anything in the name or description of the term that points out why=0A=
+a subcellular fraction is used here. Could you please explain why did=0A=
+you map it to 'subcellular preparation'?=0A=
+=0A=
+     4.- There are several cases in which I suggest to use the term=0A=
+'endogenous' additionally to signify that the endogenous protein was=0A=
+used in the assay.=0A=
+=0A=
+     5.- Finally, in some other cases, the term hints that a cell lysate=0A=
+has been used. I have added this term as well, although I saw no=0A=
+references to it from your side.=0A=
+=0A=
+I have also been checking the 'rules' file you have been putting=0A=
+together with Sandra (also attached). Most importantly, there is one=0A=
+sheet, called 'Int. methods vs part. methods' where there are a few=0A=
+suggested mappings that have not been validated on your side. Would you=0A=
+please have a look and let us know if the proposed terms are fine?=0A=
+=0A=
+Also, I found two experimental methods in the plain_example table that=0A=
+are not mapped in 'rules': reporter gene assay (SC-ID:206987) and=0A=
+southwestern blot (SC-ID:206917). For the first one, I propose using=0A=
+this MI term, please check and tell me if that's fine:=0A=
+=0A=
+http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=3Dhttp%3A%2F%2Fpurl.obolib=
+rary.org%2Fobo%2FMI_1088=0A=
+=0A=
+For southwestern blot there is just no term in the MI vocabulary, but I=0A=
+can create one, if that's OK.=0A=
+=0A=
+I think that's it. Once we have all these issues solved, I hope I can=0A=
+create a comprehensive set of mapping tables and generate the mappings.=0A=
+=0A=
+Cheers,=0A=
+=0A=
+Pablo.=0A=
+=0A=
+=0A=
+=0A=
+On 15/09/2017 20:20, Astrid L=E6greid wrote:=0A=
+>=0A=
+> Hi Pablo,=0A=
+>=0A=
+> Here=92s a try for the TF =96 see added column =93experimental preparatio=
+n=94=0A=
+>=0A=
+> I did not specify=0A=
+>=0A=
+> -"engineered" because it applies to all recombinant TFs, so hopeully=0A=
+>  easy for you to add=0A=
+>=0A=
+> - conformational status "native" because I think it applies to all MF=0A=
+> annotations (template 1 and 3), unless you consider TFs with tags to=0A=
+> not have native conformation; so, hopefully also easy for you to add=0A=
+>=0A=
+> -=93in vitro translated protein=94 because it is stated in the term=0A=
+> whenever this applies=0A=
+>=0A=
+> For the TG, I did not prepare a specific file with annotations,=0A=
+> because I think it could go by method=0A=
+>=0A=
+> MF, template 1, 3=0A=
+>=0A=
+> -All are =93native=94=0A=
+>=0A=
+> -EMSA: =93engineered=94 and =93partially purified=94=0A=
+>=0A=
+> -ChIP:  =93partially purified=94 (if the immunoprecipitation counts as=0A=
+> purification), =93naturally occuring=94=0A=
+>=0A=
+> BP: template 1,3=0A=
+>=0A=
+> -Reportergene: =93native=94, =93engineered=94=0A=
+>=0A=
+> -PCR: =93native=94, =93naturally occuring=94=0A=
+>=0A=
+> -Northern: =93native=94, =93naturally occuring=94=0A=
+>=0A=
+> Please tell me if anything is unclear or you would like some more from me=
+=0A=
+>=0A=
+> Best wishes=0A=
+>=0A=
+> Astrid=0A=
+>=0A=
+=0A=
+--=0A=
+----------------------------------------------=0A=
+Pablo Porras Mill=E1n, Ph.D.=0A=
+Molecular Interactions Project Leader=0A=
+European Molecular Biology Laboratory=0A=
+European Bioinformatics Institute (EMBL-EBI)=0A=
+Wellcome Genome Campus=0A=
+Hinxton=0A=
+Cambridge CB10 1SD=0A=
+United Kingdom=0A=
+Tel:     +44 1223 494482=0A=
+email:  pporras@ebi.ac.uk=0A=
+URL:    http://www.ebi.ac.uk/intact/main.xhtml=0A=
+----------------------------------------------=0A=
+=0A=

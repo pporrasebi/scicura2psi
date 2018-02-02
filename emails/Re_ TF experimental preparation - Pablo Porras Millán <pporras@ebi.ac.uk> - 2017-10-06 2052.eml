@@ -1,0 +1,688 @@
+Subject: Re: TF experimental preparation
+To: =?UTF-8?Q?Astrid_L=c3=a6greid?= <astrid.lagreid@ntnu.no>
+References: <b7824af317f14d0b9dfe9a398b7f9cca@it-ex12.win.ntnu.no>
+ <2020a0d0-7031-c49e-84db-45384059b277@ebi.ac.uk>
+ <48c93917eb5944bb9f18b2ba33990b30@it-ex12.win.ntnu.no>
+ <0661f132e03145919f542f4ff2e75ff5@it-ex10.win.ntnu.no>
+From: =?UTF-8?Q?Pablo_Porras_Mill=c3=a1n?= <pporras@ebi.ac.uk>
+Message-ID: <59D7DEFE.5060100@ebi.ac.uk>
+Date: Fri, 6 Oct 2017 20:52:30 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:38.0)
+ Gecko/20100101 Thunderbird/38.5.1
+MIME-Version: 1.0
+In-Reply-To: <0661f132e03145919f542f4ff2e75ff5@it-ex10.win.ntnu.no>
+Content-Type: multipart/alternative;
+ boundary="------------010104030400030201030806"
+
+This is a multi-part message in MIME format.
+--------------010104030400030201030806
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 8bit
+
+Thanks a lot, Astrid. It will take me some time to digest everything and 
+see if I have all I need, we just had a couple of big submissions and I 
+am travelling next week. I'll try to come back to you as soon as I can, 
+but bear with me, please!
+
+Cheers,
+
+Pablo.
+
+On 6/10/17 20:07, Astrid Lægreid wrote:
+> Hi Pablo,
+> I now went through all lines in the comparison TF_representation file 
+> you sent, and added comments to the best of my ability in red in new 
+> columns E, G and I (file enclosed)
+> */Please also see comments in line in the e-mail below/**/– marked 
+> blue to distinguish from the remarks I already put in on September 20/*
+> In the "rules" excel, I looked at the additions you made in
+> - first sheet "Int. methods vs part. methods", this looks ok to me
+> - sheet "int. methods vs host organism" - where you point to SciCura 
+> to IntAct hos translations in next sheet for ChIP, this also looks ok
+> I will do my best to respond quickly to additional info and comments 
+> and input that you would like from me
+> Best wishes
+> Astrid
+> >-----Original Message-----
+> >From: Astrid Lægreid
+> >Sent: Wednesday, September 20, 2017 8:32 PM
+> >To: Pablo Porras <pporras@ebi.ac.uk>
+> >Subject: RE: TF experimental preparation
+> >
+> >Hi Pablo,
+> >
+> >Thank you for going through all of this!
+> >
+> >I've tried to assess allaspect that you mention and comment on (but have to
+> >admit that I only found time in the evening, and now had to do the work wih 5
+> >week old Frida on my left arm)
+> >
+> >Please find some comments between the lines
+> >
+> >
+> >>-----Original Message-----
+> >>From: Pablo Porras [mailto:pporras@ebi.ac.uk]
+> >>Sent: Monday, September 18, 2017 3:24 PM
+> >>To: Astrid Lægreid <astrid.lagreid@ntnu.no <mailto:astrid.lagreid@ntnu.no>>
+> >>Subject: Re: TF experimental preparation
+> >>
+> >>Hi again,
+> >>
+> >>I have started working on the mappings and found some problems with the
+> >>excel spreadsheet you sent me on Friday and also with some of the rules
+> >>that were put together with Sandra before I started working on this. I
+> >>need to have these issues solved before I can create a proper mapping
+> >>from Scicura format to PSI-MI XML.
+> >>
+> >>Let's do your translation table first. I have been comparing your
+> >>mappings for the TF representation with mine and there are still a few
+> >>things that are not clear to me. I have attached a new comparison file
+> >>for you to re-check. Here's a summary of the issues I found with the
+> >>mappings:
+> >>
+> >>     1.- You propose no distinction between knock-down and knock-out of
+> >>a given TF, but these can be distinguished using the PSI-MI cv.
+> >>Although your mapping proposes using 'underexpressed level', there are
+> >>child terms in the cv for both 'knock-down' and 'knock-out'. I would
+> >>propose using the more specific terms rather than the parent.
+> >
+> >[Astrid Lægreid]*/(20.09.17)/*
+> >
+> >Yes, thank you for suggesting the more specific terms
+> >
+> >Since you ask whether KO should be created:
+> >in cases where genetic "knock out is complete for both alleles (may in fact be
+> >the case in most instances) I think it could be nice to have the term "knock
+> >out", but it is also ok to use "knock down" for in all instances
+> >
+> */[Astrid Lægreid] /*
+> */I have commented in the excel that it is good to use both terms in 
+> the appropriate places (as you have also suggested): knock down and 
+> knock out/*
+> */I could not find child terms of /**/knock down and knock out/*
+> */Sorry, n/**/ot sure what you mean by /**/“/**/using the more 
+> specific terms rather than the parent/**/”/*
+> >
+> >>
+> >>     2.- In many cases the Scicura term refers to purified protein and
+> >>you have proposed using 'partially purified' instead of 'purified' in
+> >>some -but not all- cases. For example, termID:280919 (recombinant
+> >>mutated TF with HA tag purified from E.coli cell extract) has been mapped as
+> >'partially purified'.
+> >>However, termID:280920 (recombinant mutated TF with Biotin tag purified
+> >>from E.coli cell extract) has not been mapped to anything at all. I
+> >>imagine this is just an oversight, is there any reason why some cases
+> >>have been mapped and others not? Also, what's the reason for using
+> >>'partially purified' instead of 'purified'?
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >It seemed a bit less risky with 'partially', I was not sure which degree of
+> >purification you require for "purified"
+> >
+> >If you say "purified" is ok, it's fine with me
+> >
+> >>
+> */[Astrid Lægreid] /*
+> */So, I’ve stated “ok” for all instances of “purified” that you have 
+> suggested/*
+> >>     3.- termID:206990 (knock down by siRNA interference with TF
+> >>expression) has been mapped to 'subcellular preparation', but I cannot
+> >>see anything in the name or description of the term that points out why
+> >>a subcellular fraction is used here. Could you please explain why did
+> >>you map it to 'subcellular preparation'?
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >My mistake, sorry! Thank you for pointing it out
+> >
+> >>
+> */[Astrid Lægreid] /*
+> */Ok, as suggested by you/*
+> >>     4.- There are several cases in which I suggest to use the term 'endogenous'
+> >>additionally to signify that the endogenous protein was used in the assay.
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >Yes, thank you, I agree the term should be there
+> >
+> */[Astrid Lægreid] /*
+> */Yes, fine as suggested by you /*
+> >>
+> >>     5.- Finally, in some other cases, the term hints that a cell
+> >>lysate has been used. I have added this term as well, although I saw no
+> >>references to it from your side.
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >Yes, thank you, I agree the term should be there
+> >
+> >
+> */[Astrid Lægreid] /*
+> */I think I’ve checked all instances and seen that they are ok as 
+> suggested by you/*
+> >>
+> >>I have also been checking the 'rules' file you have been putting
+> >>together with Sandra (also attached). Most importantly, there is one sheet,
+> >called 'Int.
+> >>methods vs part. methods' where there are a few suggested mappings that
+> >>have not been validated on your side. Would you please have a look and
+> >>let us know if the proposed terms are fine?
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >Yes, I think these mappings should be fine, thank you!
+> >
+> >
+> *[Astrid Lægreid] *
+> *Yes, look fine*
+> >>
+> >>Also, I found two experimental methods in the plain_example table that
+> >>are not mapped in 'rules': reporter gene assay (SC-ID:206987) and
+> >>southwestern blot (SC-ID:206917). For the first one, I propose using
+> >>this MI term, please check and tell me if that's fine:
+> >>
+> >>http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=http%3A%2F%2Fpurl.obo 
+> <http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=http%3A%2F%2Fpurl.obol>
+> >l
+> >>i
+> >>brary.org%2Fobo%2FMI_1088
+> >>
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >To me, the suggested term, "phenotype-based detection assay", does not
+> >seem optimal, because in the experiments we curate in many cases assass the
+> >DbTF regulation of specific promoters (those of the specific target genes); I've
+> >understood from Sandra that there is currently no term for reporter gene
+> >
+> */[Astrid Lægreid] /*
+> */Not quite sure how the reporter gene assay issue is best solved in 
+> intAct/psi-mi – maybe we should try to do a skype on that?/*
+> >
+> >>For southwestern blot there is just no term in the MI vocabulary, but I
+> >>can create one, if that's OK.
+> >
+> >[Astrid Lægreid] ]*/(20.09.17)/*
+> >
+> >Yes, fine, thank you
+> >
+> >---
+> */[Astrid Lægreid] /*
+> */So, yes, good, if can be created/*
+> >
+> >Please alert me on issues I may have overlooked
+> >
+> >Best whishes
+> >Astrid
+> >
+> >>
+> >>I think that's it. Once we have all these issues solved, I hope I can
+> >>create a comprehensive set of mapping tables and generate the mappings.
+> >>
+> >>Cheers,
+> >>
+> >>Pablo.
+> >>
+> >>
+> >>
+> >>On 15/09/2017 20:20, Astrid Lægreid wrote:
+> >>>
+> >>> Hi Pablo,
+> >>>
+> >>> Here’s a try for the TF – see added column “experimental preparation”
+> >>>
+> >>> I did not specify
+> >>>
+> >>> -"engineered" because it applies to all recombinant TFs, so hopeully
+> >>>  easy for you to add
+> >>>
+> >>> - conformational status "native" because I think it applies to all MF
+> >>> annotations (template 1 and 3), unless you consider TFs with tags to
+> >>> not have native conformation; so, hopefully also easy for you to add
+> >>>
+> >>> -“in vitro translated protein” because it is stated in the term
+> >>> whenever this applies
+> >>>
+> >>> For the TG, I did not prepare a specific file with annotations,
+> >>> because I think it could go by method
+> >>>
+> >>> MF, template 1, 3
+> >>>
+> >>> -All are “native”
+> >>>
+> >>> -EMSA: “engineered” and “partially purified”
+> >>>
+> >>> -ChIP:  “partially purified” (if the immunoprecipitation counts as
+> >>> purification), “naturally occuring”
+> >>>
+> >>> BP: template 1,3
+> >>>
+> >>> -Reportergene: “native”, “engineered”
+> >>>
+> >>> -PCR: “native”, “naturally occuring”
+> >>>
+> >>> -Northern: “native”, “naturally occuring”
+> >>>
+> >>> Please tell me if anything is unclear or you would like some more
+> >>> from me
+> >>>
+> >>> Best wishes
+> >>>
+> >>> Astrid
+> >>>
+> >>
+> >>--
+> >>----------------------------------------------
+> >>Pablo Porras Millán, Ph.D.
+> >>Molecular Interactions Project Leader
+> >>European Molecular Biology Laboratory
+> >>European Bioinformatics Institute (EMBL-EBI) Wellcome Genome Campus
+> >>Hinxton Cambridge CB10 1SD United Kingdom
+> >>Tel:     +44 1223 494482
+> >>email:pporras@ebi.ac.uk <mailto:pporras@ebi.ac.uk>
+> >>URL:http://www.ebi.ac.uk/intact/main.xhtml
+> >>----------------------------------------------
+
+
+--------------010104030400030201030806
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252"
+      http-equiv="Content-Type">
+  </head>
+  <body bgcolor="#FFFFFF" text="#000000">
+    Thanks a lot, Astrid. It will take me some time to digest everything
+    and see if I have all I need, we just had a couple of big
+    submissions and I am travelling next week. I'll try to come back to
+    you as soon as I can, but bear with me, please!<br>
+    <br>
+    Cheers,<br>
+    <br>
+    Pablo. <br>
+    <br>
+    <div class="moz-cite-prefix">On 6/10/17 20:07, Astrid Lægreid wrote:<br>
+    </div>
+    <blockquote
+      cite="mid:0661f132e03145919f542f4ff2e75ff5@it-ex10.win.ntnu.no"
+      type="cite">
+      <meta http-equiv="Content-Type" content="text/html;
+        charset=windows-1252">
+      <meta name="Generator" content="Microsoft Exchange Server">
+      <!-- converted from rtf -->
+      <style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --></style>
+      <font face="Calibri" size="2"><span style="font-size:11pt;">
+          <div>Hi Pablo,</div>
+          <div> </div>
+          <div>I now went through all lines in the comparison
+            TF_representation file you sent, and added comments to the
+            best of my ability in red in new columns E, G and I (file
+            enclosed)</div>
+          <div> </div>
+          <div><font color="#0070C0"><b><i>Please also see comments in
+                  line in the e-mail below</i></b><b><i> – marked blue
+                  to distinguish from the remarks I already put in on
+                  September 20</i></b></font></div>
+          <div> </div>
+          <div>In the "rules" excel, I looked at the additions you made
+            in </div>
+          <div>- first sheet "Int. methods vs part. methods", this looks
+            ok to me</div>
+          <div>- sheet "int. methods vs host organism" - where you point
+            to SciCura to IntAct hos translations in next sheet for
+            ChIP, this also looks ok </div>
+          <div> </div>
+          <div>I will do my best to respond quickly to additional info
+            and comments and input that you would like from me</div>
+          <div> </div>
+          <div>Best wishes</div>
+          <div>Astrid</div>
+          <div> </div>
+          <div> </div>
+          <div> </div>
+          <div> </div>
+          <div>&gt;-----Original Message-----</div>
+          <div>&gt;From: Astrid Lægreid</div>
+          <div>&gt;Sent: Wednesday, September 20, 2017 8:32 PM</div>
+          <div>&gt;To: Pablo Porras <a class="moz-txt-link-rfc2396E" href="mailto:pporras@ebi.ac.uk">&lt;pporras@ebi.ac.uk&gt;</a></div>
+          <div>&gt;Subject: RE: TF experimental preparation</div>
+          <div>&gt;</div>
+          <div>&gt;Hi Pablo,</div>
+          <div>&gt;</div>
+          <div>&gt;Thank you for going through all of this!</div>
+          <div>&gt;</div>
+          <div>&gt;I've tried to assess allaspect that you mention and
+            comment on (but have to</div>
+          <div>&gt;admit that I only found time in the evening, and now
+            had to do the work wih 5</div>
+          <div>&gt;week old Frida on my left arm)</div>
+          <div>&gt;</div>
+          <div>&gt;Please find some comments between the lines</div>
+          <div>&gt;</div>
+          <div>&gt;</div>
+          <div>&gt;&gt;-----Original Message-----</div>
+          <div>&gt;&gt;From: Pablo Porras [<a moz-do-not-send="true"
+              href="mailto:pporras@ebi.ac.uk">mailto:pporras@ebi.ac.uk</a>]</div>
+          <div>&gt;&gt;Sent: Monday, September 18, 2017 3:24 PM</div>
+          <div>&gt;&gt;To: Astrid Lægreid &lt;<a moz-do-not-send="true"
+              href="mailto:astrid.lagreid@ntnu.no">astrid.lagreid@ntnu.no</a>&gt;</div>
+          <div>&gt;&gt;Subject: Re: TF experimental preparation</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;Hi again,</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;I have started working on the mappings and found
+            some problems with the</div>
+          <div>&gt;&gt;excel spreadsheet you sent me on Friday and also
+            with some of the rules</div>
+          <div>&gt;&gt;that were put together with Sandra before I
+            started working on this. I</div>
+          <div>&gt;&gt;need to have these issues solved before I can
+            create a proper mapping</div>
+          <div>&gt;&gt;from Scicura format to PSI-MI XML.</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;Let's do your translation table first. I have
+            been comparing your</div>
+          <div>&gt;&gt;mappings for the TF representation with mine and
+            there are still a few</div>
+          <div>&gt;&gt;things that are not clear to me. I have attached
+            a new comparison file</div>
+          <div>&gt;&gt;for you to re-check. Here's a summary of the
+            issues I found with the</div>
+          <div>&gt;&gt;mappings:</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;     1.- You propose no distinction between
+            knock-down and knock-out of</div>
+          <div>&gt;&gt;a given TF, but these can be distinguished using
+            the PSI-MI cv.</div>
+          <div>&gt;&gt;Although your mapping proposes using
+            'underexpressed level', there are</div>
+          <div>&gt;&gt;child terms in the cv for both 'knock-down' and
+            'knock-out'. I would</div>
+          <div>&gt;&gt;propose using the more specific terms rather than
+            the parent.</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;Yes, thank you for suggesting the more specific terms</div>
+          <div>&gt;</div>
+          <div>&gt;Since you ask whether KO should be created:</div>
+          <div>&gt;in cases where genetic "knock out is complete for
+            both alleles (may in fact be</div>
+          <div>&gt;the case in most instances) I think it could be nice
+            to have the term "knock</div>
+          <div>&gt;out", but it is also ok to use "knock down" for in
+            all instances</div>
+          <div>&gt;</div>
+          <div> </div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>I have commented in the excel
+                  that it is good to use both terms in the appropriate
+                  places (as you have also suggested): knock down and
+                  knock out</i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>I could not find child terms
+                  of </i></b><b><i>knock down and knock out</i></b></font></div>
+          <div><font color="#0070C0"><b><i>Sorry, n</i></b><b><i>ot sure
+                  what you mean by </i></b><b><i>“</i></b><b><i>using
+                  the more specific terms rather than the parent</i></b><b><i>”</i></b></font></div>
+          <div> </div>
+          <div>&gt;</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;     2.- In many cases the Scicura term refers to
+            purified protein and</div>
+          <div>&gt;&gt;you have proposed using 'partially purified'
+            instead of 'purified' in</div>
+          <div>&gt;&gt;some -but not all- cases. For example,
+            termID:280919 (recombinant</div>
+          <div>&gt;&gt;mutated TF with HA tag purified from E.coli cell
+            extract) has been mapped as</div>
+          <div>&gt;'partially purified'.</div>
+          <div>&gt;&gt;However, termID:280920 (recombinant mutated TF
+            with Biotin tag purified</div>
+          <div>&gt;&gt;from E.coli cell extract) has not been mapped to
+            anything at all. I</div>
+          <div>&gt;&gt;imagine this is just an oversight, is there any
+            reason why some cases</div>
+          <div>&gt;&gt;have been mapped and others not? Also, what's the
+            reason for using</div>
+          <div>&gt;&gt;'partially purified' instead of 'purified'?</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;It seemed a bit less risky with 'partially', I was
+            not sure which degree of</div>
+          <div>&gt;purification you require for "purified"</div>
+          <div>&gt;</div>
+          <div>&gt;If you say "purified" is ok, it's fine with me</div>
+          <div>&gt;</div>
+          <div>&gt;&gt;</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>So, I’ve stated “ok” for all
+                  instances of “purified” that you have suggested</i></b></font></div>
+          <div> </div>
+          <div> </div>
+          <div>&gt;&gt;     3.- termID:206990 (knock down by siRNA
+            interference with TF</div>
+          <div>&gt;&gt;expression) has been mapped to 'subcellular
+            preparation', but I cannot</div>
+          <div>&gt;&gt;see anything in the name or description of the
+            term that points out why</div>
+          <div>&gt;&gt;a subcellular fraction is used here. Could you
+            please explain why did</div>
+          <div>&gt;&gt;you map it to 'subcellular preparation'?</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;My mistake, sorry! Thank you for pointing it out</div>
+          <div>&gt;</div>
+          <div>&gt;&gt;</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>Ok, as suggested by you</i></b></font></div>
+          <div> </div>
+          <div> </div>
+          <div>&gt;&gt;     4.- There are several cases in which I
+            suggest to use the term 'endogenous'</div>
+          <div>&gt;&gt;additionally to signify that the endogenous
+            protein was used in the assay.</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;Yes, thank you, I agree the term should be there</div>
+          <div>&gt;</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>Yes, fine as suggested by you
+                </i></b></font></div>
+          <div> </div>
+          <div> </div>
+          <div> </div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;     5.- Finally, in some other cases, the term
+            hints that a cell</div>
+          <div>&gt;&gt;lysate has been used. I have added this term as
+            well, although I saw no</div>
+          <div>&gt;&gt;references to it from your side.</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;Yes, thank you, I agree the term should be there</div>
+          <div>&gt;</div>
+          <div>&gt;</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>I think I’ve checked all
+                  instances and seen that they are ok as suggested by
+                  you</i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div> </div>
+          <div> </div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;I have also been checking the 'rules' file you
+            have been putting</div>
+          <div>&gt;&gt;together with Sandra (also attached). Most
+            importantly, there is one sheet,</div>
+          <div>&gt;called 'Int.</div>
+          <div>&gt;&gt;methods vs part. methods' where there are a few
+            suggested mappings that</div>
+          <div>&gt;&gt;have not been validated on your side. Would you
+            please have a look and</div>
+          <div>&gt;&gt;let us know if the proposed terms are fine?</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;Yes, I think these mappings should be fine, thank
+            you!</div>
+          <div>&gt;</div>
+          <div>&gt;</div>
+          <div><font color="#0070C0"><b>[Astrid Lægreid] </b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b>Yes, look fine</b></font></div>
+          <div> </div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;Also, I found two experimental methods in the
+            plain_example table that</div>
+          <div>&gt;&gt;are not mapped in 'rules': reporter gene assay
+            (SC-ID:206987) and</div>
+          <div>&gt;&gt;southwestern blot (SC-ID:206917). For the first
+            one, I propose using</div>
+          <div>&gt;&gt;this MI term, please check and tell me if that's
+            fine:</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;<a moz-do-not-send="true"
+href="http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=http%3A%2F%2Fpurl.obol">http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=http%3A%2F%2Fpurl.obo</a></div>
+          <div>&gt;l</div>
+          <div>&gt;&gt;i</div>
+          <div>&gt;&gt;brary.org%2Fobo%2FMI_1088</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;To me, the suggested term, "phenotype-based detection
+            assay", does not</div>
+          <div>&gt;seem optimal, because in the experiments we curate in
+            many cases assass the</div>
+          <div>&gt;DbTF regulation of specific promoters (those of the
+            specific target genes); I've</div>
+          <div>&gt;understood from Sandra that there is currently no
+            term for reporter gene</div>
+          <div>&gt;</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>Not quite sure how the
+                  reporter gene assay issue is best solved in
+                  intAct/psi-mi – maybe we should try to do a skype on
+                  that?</i></b></font></div>
+          <div>&gt;</div>
+          <div>&gt;&gt;For southwestern blot there is just no term in
+            the MI vocabulary, but I</div>
+          <div>&gt;&gt;can create one, if that's OK.</div>
+          <div>&gt;</div>
+          <div>&gt;[Astrid Lægreid] ]<b><i>(20.09.17)</i></b></div>
+          <div>&gt;</div>
+          <div>&gt;Yes, fine, thank you</div>
+          <div>&gt;</div>
+          <div>&gt;---</div>
+          <div><font color="#0070C0"><b><i>[Astrid Lægreid] </i></b></font></div>
+          <div><font color="#0070C0"> </font></div>
+          <div><font color="#0070C0"><b><i>So, yes, good, if can be
+                  created</i></b></font></div>
+          <div>&gt;</div>
+          <div>&gt;Please alert me on issues I may have overlooked</div>
+          <div>&gt;</div>
+          <div>&gt;Best whishes</div>
+          <div>&gt;Astrid</div>
+          <div>&gt;</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;I think that's it. Once we have all these issues
+            solved, I hope I can</div>
+          <div>&gt;&gt;create a comprehensive set of mapping tables and
+            generate the mappings.</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;Cheers,</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;Pablo.</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;On 15/09/2017 20:20, Astrid Lægreid wrote:</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; Hi Pablo,</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; Here’s a try for the TF – see added column
+            “experimental preparation”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; I did not specify</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -"engineered" because it applies to all
+            recombinant TFs, so hopeully</div>
+          <div>&gt;&gt;&gt;  easy for you to add</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; - conformational status "native" because I
+            think it applies to all MF</div>
+          <div>&gt;&gt;&gt; annotations (template 1 and 3), unless you
+            consider TFs with tags to</div>
+          <div>&gt;&gt;&gt; not have native conformation; so, hopefully
+            also easy for you to add</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -“in vitro translated protein” because it is
+            stated in the term</div>
+          <div>&gt;&gt;&gt; whenever this applies</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; For the TG, I did not prepare a specific
+            file with annotations,</div>
+          <div>&gt;&gt;&gt; because I think it could go by method</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; MF, template 1, 3</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -All are “native”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -EMSA: “engineered” and “partially purified”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -ChIP:  “partially purified” (if the
+            immunoprecipitation counts as</div>
+          <div>&gt;&gt;&gt; purification), “naturally occuring”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; BP: template 1,3</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -Reportergene: “native”, “engineered”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -PCR: “native”, “naturally occuring”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; -Northern: “native”, “naturally occuring”</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; Please tell me if anything is unclear or you
+            would like some more</div>
+          <div>&gt;&gt;&gt; from me</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; Best wishes</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;&gt; Astrid</div>
+          <div>&gt;&gt;&gt;</div>
+          <div>&gt;&gt;</div>
+          <div>&gt;&gt;--</div>
+          <div>&gt;&gt;----------------------------------------------</div>
+          <div>&gt;&gt;Pablo Porras Millán, Ph.D.</div>
+          <div>&gt;&gt;Molecular Interactions Project Leader</div>
+          <div>&gt;&gt;European Molecular Biology Laboratory</div>
+          <div>&gt;&gt;European Bioinformatics Institute (EMBL-EBI)
+            Wellcome Genome Campus</div>
+          <div>&gt;&gt;Hinxton Cambridge CB10 1SD United Kingdom</div>
+          <div>&gt;&gt;Tel:     +44 1223 494482</div>
+          <div>&gt;&gt;email:  <a moz-do-not-send="true"
+              href="mailto:pporras@ebi.ac.uk">pporras@ebi.ac.uk</a></div>
+          <div>&gt;&gt;URL:    <a moz-do-not-send="true"
+              href="http://www.ebi.ac.uk/intact/main.xhtml">http://www.ebi.ac.uk/intact/main.xhtml</a></div>
+          <div>&gt;&gt;----------------------------------------------</div>
+          <div> </div>
+          <div> </div>
+        </span></font>
+    </blockquote>
+    <br>
+  </body>
+</html>
+
+--------------010104030400030201030806--

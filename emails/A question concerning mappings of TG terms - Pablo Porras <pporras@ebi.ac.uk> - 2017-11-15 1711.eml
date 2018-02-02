@@ -1,0 +1,59 @@
+To: =?UTF-8?Q?Astrid_L=c3=a6greid?= <astrid.lagreid@ntnu.no>,
+ marcio.l.acencio@ntnu.no
+From: Pablo Porras <pporras@ebi.ac.uk>
+Subject: A question concerning mappings of TG terms
+Message-ID: <91f8cfce-e5f8-a6cd-161c-3444dc8491fb@ebi.ac.uk>
+Date: Wed, 15 Nov 2017 17:11:44 +0000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:52.0)
+ Gecko/20100101 Thunderbird/52.4.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+
+Hi Astrid and Marcio,
+
+After quite some time, I finally found the chance to have a look at the 
+mappings from scicura. I am starting to put things together and I hope 
+to have a mapping file and an xml version of your data soon, but I have 
+a couple of questions first.
+
+The most problematic part is representing the TG annotation fields, as 
+we already anticipated. The main issue is that, in many cases, there is 
+no idnetifier provided for the specific TG in the scicura files you sent 
+me. There are 724 cases in the 'scicura_annotation.xlsx' file 
+(spreadsheet 'plain_example') for which the TG name is just '(gene)'. If 
+I interpret this correctly, this means that the specific gene to which 
+the TF associated was not identified or could not be mapped. Is that so? 
+Do you keep an internal file with the sequences or some other 
+identifying feature for these cases? They will be problematic when 
+generating the file,although I can force the creation of an internal 
+identifier if needed.
+
+Another thing I would like to discuss is the annotation of the TG 
+element with the Sequence Ontology terms. I will incorporate all these 
+terms as cross-references to the TG 'participant', if that's fine with 
+you. Let me know otherwise, please.
+
+I think that's it for now, I hope to have something ready before the 
+meeting in Rome. Are you both going?
+
+Cheers,
+
+Pablo.
+
+-- 
+----------------------------------------------
+Pablo Porras Millán, Ph.D.
+Molecular Interactions Team Project Leader
+European Molecular Biology Laboratory
+European Bioinformatics Institute (EMBL-EBI)
+Wellcome Genome Campus
+Hinxton
+Cambridge CB10 1SD
+United Kingdom
+Tel:     +44 1223 494482
+email:  pporras@ebi.ac.uk
+URL:    http://www.ebi.ac.uk/intact/main.xhtml
+----------------------------------------------
+

@@ -1,0 +1,64 @@
+Subject: Re: SV: A question concerning mappings of TG terms
+To: Marcio Luis Acencio <marcio.l.acencio@ntnu.no>
+Cc: =?UTF-8?Q?Astrid_L=c3=a6greid?= <astrid.lagreid@ntnu.no>
+References: <91f8cfce-e5f8-a6cd-161c-3444dc8491fb@ebi.ac.uk>
+ <1511428257288.51826@ntnu.no>
+From: Pablo Porras <pporras@ebi.ac.uk>
+Message-ID: <66984719-54ef-b0fa-ae7d-27dec68e9e4f@ebi.ac.uk>
+Date: Thu, 23 Nov 2017 09:35:01 +0000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:52.0)
+ Gecko/20100101 Thunderbird/52.4.0
+MIME-Version: 1.0
+In-Reply-To: <1511428257288.51826@ntnu.no>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+
+Fair enough, thanks for the clarification. I'll try to get some mappings 
+done before Rome, but I can't promise I'll have it by then.
+
+Cheers,
+
+Pablo.
+
+On 23/11/2017 09:10, Marcio Luis Acencio wrote:
+> Hi Pablo!
+>
+> Thank you for the email and sorry for the delayed reply.
+>
+> For now we think that it is better to just leave out all interactions lacking a defined gene. In fact we don't have any internal file with sequence information for these interactions missing a TG. In the future we will certainly go back to the papers from which these interactions have been extracted and collect the appropriate sequence information.
+>
+> Regarding the incorporation of SO terms as cross-references to the TG participant: we are fine with this!
+>
+> We are both going to Rome and maybe we can find time to discuss some other issues related to the Scicura-PSI-XML conversion process.
+>
+> Best regards,
+>
+> Marcio
+>
+> _________________________
+> Marcio Luis Acencio, PhD
+> Postdoctoral Fellow
+> Department of Cancer Research and Molecular Medicine
+> Norwegian University of Science and Technology (NTNU)
+> Telephone: +47 72 82 6925
+> e-mail: marcio.l.acencio@ntnu.no
+>
+>
+>
+
+-- 
+----------------------------------------------
+Pablo Porras Millán, Ph.D.
+Molecular Interactions Team Project Leader
+European Molecular Biology Laboratory
+European Bioinformatics Institute (EMBL-EBI)
+Wellcome Genome Campus
+Hinxton
+Cambridge CB10 1SD
+United Kingdom
+Tel:     +44 1223 494482
+email:  pporras@ebi.ac.uk
+URL:    http://www.ebi.ac.uk/intact/main.xhtml
+----------------------------------------------
+

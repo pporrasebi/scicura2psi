@@ -1,0 +1,11 @@
+shtlbl	mi_code
+mutation	MI:0118
+gst tag	MI:0519
+his tag	MI:0521
+flag tag	MI:0518
+tag	MI:0507
+ha tag	MI:0520
+biotin tag	MI:0239
+myc tag	MI:0522
+t7 tag	MI:0523
+mbp tag	MI:0578

@@ -1,0 +1,748 @@
+Return-Path: <astrid.lagreid@ntnu.no>
+Received: from imap01.ebi.ac.uk ([unix socket])
+	 by imap01.ebi.ac.uk (Cyrus v2.3.16-Fedora-RPM-2.3.16-6.el6_2.5) with LMTPA;
+	 Fri, 06 Oct 2017 20:07:31 +0100
+X-Sieve: CMU Sieve 2.3
+Received: from smtp07.ebi.ac.uk (smtp07.ebi.ac.uk [193.62.196.50])
+	by imap01.ebi.ac.uk (8.14.4/8.14.4) with ESMTP id v96J7U8k001913
+	for <pporras@imap01.ebi.ac.uk>; Fri, 6 Oct 2017 20:07:30 +0100
+Received: from hx-mx2.ebi.ac.uk (mx2.ebi.ac.uk [193.62.195.239])
+	by smtp07.ebi.ac.uk (8.13.8/8.13.8) with ESMTP id v96J7UG8013533
+	for <pporras@ebi.ac.uk>; Fri, 6 Oct 2017 20:07:30 +0100
+Received: from hx-mx2.ebi.ac.uk (localhost.localdomain [127.0.0.1])
+	by localhost (Email Security Appliance) with SMTP id BEC34131A17_9D7D472B
+	for <pporras@ebi.ac.uk>; Fri,  6 Oct 2017 19:07:30 +0000 (GMT)
+Received: from mailgw02.it.ntnu.no (mailgw02.it.ntnu.no [129.241.56.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client did not present a certificate)
+	by hx-mx2.ebi.ac.uk (Sophos Email Appliance) with ESMTPS id CB6F512F572_9D7D471F
+	for <pporras@ebi.ac.uk>; Fri,  6 Oct 2017 19:07:29 +0000 (GMT)
+Received: from localhost (localhost [127.0.0.1])
+	by mailgw02.it.ntnu.no (Postfix) with ESMTP id 5E082801EF1
+	for <pporras@ebi.ac.uk>; Fri,  6 Oct 2017 21:07:28 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at mailgw02.it.ntnu.no
+Received: from mailgw02.it.ntnu.no ([127.0.0.1])
+	by localhost (mailgw02.it.ntnu.no [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FJG22Mkm0AZm for <pporras@ebi.ac.uk>;
+	Fri,  6 Oct 2017 21:07:20 +0200 (CEST)
+Received: from it-ex13.win.ntnu.no (it-ex13.it.ntnu.no [IPv6:2001:700:300:3::148])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mailgw02.it.ntnu.no (Postfix) with ESMTPS id 214D3801EC1
+	for <pporras@ebi.ac.uk>; Fri,  6 Oct 2017 21:07:20 +0200 (CEST)
+Received: from it-ex10.win.ntnu.no (2001:700:300:3::145) by
+ it-ex13.win.ntnu.no (2001:700:300:3::148) with Microsoft SMTP Server (TLS) id
+ 15.0.1320.4; Fri, 6 Oct 2017 21:07:19 +0200
+Received: from it-ex10.win.ntnu.no ([fe80::6c2a:c0e2:3dfd:4516]) by
+ it-ex10.win.ntnu.no ([fe80::6c2a:c0e2:3dfd:4516%17]) with mapi id
+ 15.00.1320.000; Fri, 6 Oct 2017 21:07:19 +0200
+From: =?Windows-1252?Q?Astrid_L=E6greid?= <astrid.lagreid@ntnu.no>
+To: Pablo Porras <pporras@ebi.ac.uk>
+Subject: RE: TF experimental preparation
+Thread-Topic: TF experimental preparation
+Thread-Index: AdMuVlj2nxoewt5CSUa7LC17QpzS8ACGlZgAAHIxZXADJqz7gA==
+Date: Fri, 6 Oct 2017 19:07:19 +0000
+Message-ID: <0661f132e03145919f542f4ff2e75ff5@it-ex10.win.ntnu.no>
+References: <b7824af317f14d0b9dfe9a398b7f9cca@it-ex12.win.ntnu.no>
+ <2020a0d0-7031-c49e-84db-45384059b277@ebi.ac.uk>
+ <48c93917eb5944bb9f18b2ba33990b30@it-ex12.win.ntnu.no>
+In-Reply-To: <48c93917eb5944bb9f18b2ba33990b30@it-ex12.win.ntnu.no>
+Accept-Language: nb-NO, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+X-Ntnu-xOriginatingIp: [129.241.221.177]
+Content-Type: multipart/alternative;
+	boundary="_000_0661f132e03145919f542f4ff2e75ff5itex10winntnuno_"
+MIME-Version: 1.0
+X-Sophos-SenderHistory: ip=129.241.56.175,fs=2461308,da=76968018,mc=74,sc=0,hc=74,sp=0,fso=2461308,re=0,sd=0,hd=2
+X-Sophos-ESA: [hx-mx2.ebi.ac.uk] 4.2.1.1, Antispam-Engine: 2.7.2.2107409, Antispam-Data: 2017.10.6.185716
+X-SEA-Spam: Gauge=IIIIIIII, Probability=8%, Report='
+ HTML_NO_HTTP 0.1, BODYTEXTH_SIZE_3000_MORE 0, BODY_SIZE_10000_PLUS 0, DQ_S_H 0, IN_REP_TO 0, LEGITIMATE_SIGNS 0, MSG_THREAD 0, NO_URI_HTTPS 0, REFERENCES 0, SPF_PASS 0, URI_WITH_PATH_ONLY 0, __ANY_URI 0, __BOUNCE_CHALLENGE_SUBJ 0, __BOUNCE_NDR_SUBJ_EXEMPT 0, __C230066_P2 0, __CP_NAME_BODY 0, __CP_URI_IN_BODY 0, __CT 0, __CTYPE_HAS_BOUNDARY 0, __CTYPE_MULTIPART 0, __CTYPE_MULTIPART_ALT 0, __DQ_IP_FSO_LARGE 0, __DQ_S_HIST_1 0, __DQ_S_HIST_2 0, __DQ_S_IP_MC_10_P 0, __FORWARDED_MSG 0, __FRAUD_CONTACT_NUM 0, __HAS_FROM 0, __HAS_HTML 0, __HAS_MSGID 0, __HIGHBITS 0, __HTML_TAG_DIV 0, __IN_REP_TO 0, __MIME_HTML 0, __MIME_TEXT_H 0, __MIME_TEXT_H1 0, __MIME_TEXT_H2 0, __MIME_TEXT_P 0, __MIME_TEXT_P1 0, __MIME_TEXT_P2 0, __MIME_VERSION 0, __MSGID_32HEX 0, __MULTIPLE_URI_TEXT 0, __REFERENCES 0, __SANE_MSGID 0, __STOCK_PHRASE_7 0, __STYLE_RATWARE_NEG 0, __STYLE_TAG 0, __SUBJ_ALPHA_NEGATE 0,
+ __TAG_EXISTS_HTML 0, __TO_MALFORMED_2 0, __TO_NAME 0, __TO_NAME_DIFF_FROM_ACC 0, __TO_REAL_NAMES 0, __URI_IN_BODY 0, __URI_NOT_IMG 0, __URI_NS , __URI_WITH_PATH 0'
+
+--_000_0661f132e03145919f542f4ff2e75ff5itex10winntnuno_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Pablo,
+
+I now went through all lines in the comparison TF_representation file you s=
+ent, and added comments to the best of my ability in red in new columns E, =
+G and I (file enclosed)
+
+Please also see comments in line in the e-mail below =96 marked blue to dis=
+tinguish from the remarks I already put in on September 20
+
+In the "rules" excel, I looked at the additions you made in
+- first sheet "Int. methods vs part. methods", this looks ok to me
+- sheet "int. methods vs host organism" - where you point to SciCura to Int=
+Act hos translations in next sheet for ChIP, this also looks ok
+
+I will do my best to respond quickly to additional info and comments and in=
+put that you would like from me
+
+Best wishes
+Astrid
+
+
+
+
+>-----Original Message-----
+>From: Astrid L=E6greid
+>Sent: Wednesday, September 20, 2017 8:32 PM
+>To: Pablo Porras <pporras@ebi.ac.uk>
+>Subject: RE: TF experimental preparation
+>
+>Hi Pablo,
+>
+>Thank you for going through all of this!
+>
+>I've tried to assess allaspect that you mention and comment on (but have t=
+o
+>admit that I only found time in the evening, and now had to do the work wi=
+h 5
+>week old Frida on my left arm)
+>
+>Please find some comments between the lines
+>
+>
+>>-----Original Message-----
+>>From: Pablo Porras [mailto:pporras@ebi.ac.uk]
+>>Sent: Monday, September 18, 2017 3:24 PM
+>>To: Astrid L=E6greid <astrid.lagreid@ntnu.no<mailto:astrid.lagreid@ntnu.n=
+o>>
+>>Subject: Re: TF experimental preparation
+>>
+>>Hi again,
+>>
+>>I have started working on the mappings and found some problems with the
+>>excel spreadsheet you sent me on Friday and also with some of the rules
+>>that were put together with Sandra before I started working on this. I
+>>need to have these issues solved before I can create a proper mapping
+>>from Scicura format to PSI-MI XML.
+>>
+>>Let's do your translation table first. I have been comparing your
+>>mappings for the TF representation with mine and there are still a few
+>>things that are not clear to me. I have attached a new comparison file
+>>for you to re-check. Here's a summary of the issues I found with the
+>>mappings:
+>>
+>>     1.- You propose no distinction between knock-down and knock-out of
+>>a given TF, but these can be distinguished using the PSI-MI cv.
+>>Although your mapping proposes using 'underexpressed level', there are
+>>child terms in the cv for both 'knock-down' and 'knock-out'. I would
+>>propose using the more specific terms rather than the parent.
+>
+>[Astrid L=E6greid](20.09.17)
+>
+>Yes, thank you for suggesting the more specific terms
+>
+>Since you ask whether KO should be created:
+>in cases where genetic "knock out is complete for both alleles (may in fac=
+t be
+>the case in most instances) I think it could be nice to have the term "kno=
+ck
+>out", but it is also ok to use "knock down" for in all instances
+>
+
+[Astrid L=E6greid]
+
+I have commented in the excel that it is good to use both terms in the appr=
+opriate places (as you have also suggested): knock down and knock out
+
+I could not find child terms of knock down and knock out
+Sorry, not sure what you mean by =93using the more specific terms rather th=
+an the parent=94
+
+>
+>>
+>>     2.- In many cases the Scicura term refers to purified protein and
+>>you have proposed using 'partially purified' instead of 'purified' in
+>>some -but not all- cases. For example, termID:280919 (recombinant
+>>mutated TF with HA tag purified from E.coli cell extract) has been mapped=
+ as
+>'partially purified'.
+>>However, termID:280920 (recombinant mutated TF with Biotin tag purified
+>>from E.coli cell extract) has not been mapped to anything at all. I
+>>imagine this is just an oversight, is there any reason why some cases
+>>have been mapped and others not? Also, what's the reason for using
+>>'partially purified' instead of 'purified'?
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>It seemed a bit less risky with 'partially', I was not sure which degree o=
+f
+>purification you require for "purified"
+>
+>If you say "purified" is ok, it's fine with me
+>
+>>
+[Astrid L=E6greid]
+
+So, I=92ve stated =93ok=94 for all instances of =93purified=94 that you hav=
+e suggested
+
+
+>>     3.- termID:206990 (knock down by siRNA interference with TF
+>>expression) has been mapped to 'subcellular preparation', but I cannot
+>>see anything in the name or description of the term that points out why
+>>a subcellular fraction is used here. Could you please explain why did
+>>you map it to 'subcellular preparation'?
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>My mistake, sorry! Thank you for pointing it out
+>
+>>
+[Astrid L=E6greid]
+
+Ok, as suggested by you
+
+
+>>     4.- There are several cases in which I suggest to use the term 'endo=
+genous'
+>>additionally to signify that the endogenous protein was used in the assay=
+.
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>Yes, thank you, I agree the term should be there
+>
+[Astrid L=E6greid]
+
+Yes, fine as suggested by you
+
+
+
+>>
+>>     5.- Finally, in some other cases, the term hints that a cell
+>>lysate has been used. I have added this term as well, although I saw no
+>>references to it from your side.
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>Yes, thank you, I agree the term should be there
+>
+>
+[Astrid L=E6greid]
+
+I think I=92ve checked all instances and seen that they are ok as suggested=
+ by you
+
+
+
+>>
+>>I have also been checking the 'rules' file you have been putting
+>>together with Sandra (also attached). Most importantly, there is one shee=
+t,
+>called 'Int.
+>>methods vs part. methods' where there are a few suggested mappings that
+>>have not been validated on your side. Would you please have a look and
+>>let us know if the proposed terms are fine?
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>Yes, I think these mappings should be fine, thank you!
+>
+>
+[Astrid L=E6greid]
+
+Yes, look fine
+
+>>
+>>Also, I found two experimental methods in the plain_example table that
+>>are not mapped in 'rules': reporter gene assay (SC-ID:206987) and
+>>southwestern blot (SC-ID:206917). For the first one, I propose using
+>>this MI term, please check and tell me if that's fine:
+>>
+>>http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=3Dhttp%3A%2F%2Fpurl.obo<=
+http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=3Dhttp%3A%2F%2Fpurl.obol>
+>l
+>>i
+>>brary.org%2Fobo%2FMI_1088
+>>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>To me, the suggested term, "phenotype-based detection assay", does not
+>seem optimal, because in the experiments we curate in many cases assass th=
+e
+>DbTF regulation of specific promoters (those of the specific target genes)=
+; I've
+>understood from Sandra that there is currently no term for reporter gene
+>
+[Astrid L=E6greid]
+
+Not quite sure how the reporter gene assay issue is best solved in intAct/p=
+si-mi =96 maybe we should try to do a skype on that?
+>
+>>For southwestern blot there is just no term in the MI vocabulary, but I
+>>can create one, if that's OK.
+>
+>[Astrid L=E6greid] ](20.09.17)
+>
+>Yes, fine, thank you
+>
+>---
+[Astrid L=E6greid]
+
+So, yes, good, if can be created
+>
+>Please alert me on issues I may have overlooked
+>
+>Best whishes
+>Astrid
+>
+>>
+>>I think that's it. Once we have all these issues solved, I hope I can
+>>create a comprehensive set of mapping tables and generate the mappings.
+>>
+>>Cheers,
+>>
+>>Pablo.
+>>
+>>
+>>
+>>On 15/09/2017 20:20, Astrid L=E6greid wrote:
+>>>
+>>> Hi Pablo,
+>>>
+>>> Here=92s a try for the TF =96 see added column =93experimental preparat=
+ion=94
+>>>
+>>> I did not specify
+>>>
+>>> -"engineered" because it applies to all recombinant TFs, so hopeully
+>>>  easy for you to add
+>>>
+>>> - conformational status "native" because I think it applies to all MF
+>>> annotations (template 1 and 3), unless you consider TFs with tags to
+>>> not have native conformation; so, hopefully also easy for you to add
+>>>
+>>> -=93in vitro translated protein=94 because it is stated in the term
+>>> whenever this applies
+>>>
+>>> For the TG, I did not prepare a specific file with annotations,
+>>> because I think it could go by method
+>>>
+>>> MF, template 1, 3
+>>>
+>>> -All are =93native=94
+>>>
+>>> -EMSA: =93engineered=94 and =93partially purified=94
+>>>
+>>> -ChIP:  =93partially purified=94 (if the immunoprecipitation counts as
+>>> purification), =93naturally occuring=94
+>>>
+>>> BP: template 1,3
+>>>
+>>> -Reportergene: =93native=94, =93engineered=94
+>>>
+>>> -PCR: =93native=94, =93naturally occuring=94
+>>>
+>>> -Northern: =93native=94, =93naturally occuring=94
+>>>
+>>> Please tell me if anything is unclear or you would like some more
+>>> from me
+>>>
+>>> Best wishes
+>>>
+>>> Astrid
+>>>
+>>
+>>--
+>>----------------------------------------------
+>>Pablo Porras Mill=E1n, Ph.D.
+>>Molecular Interactions Project Leader
+>>European Molecular Biology Laboratory
+>>European Bioinformatics Institute (EMBL-EBI) Wellcome Genome Campus
+>>Hinxton Cambridge CB10 1SD United Kingdom
+>>Tel:     +44 1223 494482
+>>email:  pporras@ebi.ac.uk<mailto:pporras@ebi.ac.uk>
+>>URL:    http://www.ebi.ac.uk/intact/main.xhtml
+>>----------------------------------------------
+
+
+
+--_000_0661f132e03145919f542f4ff2e75ff5itex10winntnuno_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<meta name=3D"Generator" content=3D"Microsoft Exchange Server">
+<!-- converted from rtf -->
+<style><!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left:=
+ #800000 2px solid; } --></style>
+</head>
+<body>
+<font face=3D"Calibri" size=3D"2"><span style=3D"font-size:11pt;">
+<div>Hi Pablo,</div>
+<div>&nbsp;</div>
+<div>I now went through all lines in the comparison TF_representation file =
+you sent, and added comments to the best of my ability in red in new column=
+s E, G and I (file enclosed)</div>
+<div>&nbsp;</div>
+<div><font color=3D"#0070C0"><b><i>Please also see comments in line in the =
+e-mail below</i></b><b><i> =96 marked blue to distinguish from the remarks =
+I already put in on September 20</i></b></font></div>
+<div>&nbsp;</div>
+<div>In the &quot;rules&quot; excel, I looked at the additions you made in =
+</div>
+<div>- first sheet &quot;Int. methods vs part. methods&quot;, this looks ok=
+ to me</div>
+<div>- sheet &quot;int. methods vs host organism&quot; - where you point to=
+ SciCura to IntAct hos translations in next sheet for ChIP, this also looks=
+ ok </div>
+<div>&nbsp;</div>
+<div>I will do my best to respond quickly to additional info and comments a=
+nd input that you would like from me</div>
+<div>&nbsp;</div>
+<div>Best wishes</div>
+<div>Astrid</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&gt;-----Original Message-----</div>
+<div>&gt;From: Astrid L=E6greid</div>
+<div>&gt;Sent: Wednesday, September 20, 2017 8:32 PM</div>
+<div>&gt;To: Pablo Porras &lt;pporras@ebi.ac.uk&gt;</div>
+<div>&gt;Subject: RE: TF experimental preparation</div>
+<div>&gt;</div>
+<div>&gt;Hi Pablo,</div>
+<div>&gt;</div>
+<div>&gt;Thank you for going through all of this!</div>
+<div>&gt;</div>
+<div>&gt;I've tried to assess allaspect that you mention and comment on (bu=
+t have to</div>
+<div>&gt;admit that I only found time in the evening, and now had to do the=
+ work wih 5</div>
+<div>&gt;week old Frida on my left arm)</div>
+<div>&gt;</div>
+<div>&gt;Please find some comments between the lines</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div>&gt;&gt;-----Original Message-----</div>
+<div>&gt;&gt;From: Pablo Porras [<a href=3D"mailto:pporras@ebi.ac.uk">mailt=
+o:pporras@ebi.ac.uk</a>]</div>
+<div>&gt;&gt;Sent: Monday, September 18, 2017 3:24 PM</div>
+<div>&gt;&gt;To: Astrid L=E6greid &lt;<a href=3D"mailto:astrid.lagreid@ntnu=
+.no">astrid.lagreid@ntnu.no</a>&gt;</div>
+<div>&gt;&gt;Subject: Re: TF experimental preparation</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;Hi again,</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;I have started working on the mappings and found some problems=
+ with the</div>
+<div>&gt;&gt;excel spreadsheet you sent me on Friday and also with some of =
+the rules</div>
+<div>&gt;&gt;that were put together with Sandra before I started working on=
+ this. I</div>
+<div>&gt;&gt;need to have these issues solved before I can create a proper =
+mapping</div>
+<div>&gt;&gt;from Scicura format to PSI-MI XML.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;Let's do your translation table first. I have been comparing y=
+our</div>
+<div>&gt;&gt;mappings for the TF representation with mine and there are sti=
+ll a few</div>
+<div>&gt;&gt;things that are not clear to me. I have attached a new compari=
+son file</div>
+<div>&gt;&gt;for you to re-check. Here's a summary of the issues I found wi=
+th the</div>
+<div>&gt;&gt;mappings:</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp;&nbsp;&nbsp; 1.- You propose no distinction between kno=
+ck-down and knock-out of</div>
+<div>&gt;&gt;a given TF, but these can be distinguished using the PSI-MI cv=
+.</div>
+<div>&gt;&gt;Although your mapping proposes using 'underexpressed level', t=
+here are</div>
+<div>&gt;&gt;child terms in the cv for both 'knock-down' and 'knock-out'. I=
+ would</div>
+<div>&gt;&gt;propose using the more specific terms rather than the parent.<=
+/div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;Yes, thank you for suggesting the more specific terms</div>
+<div>&gt;</div>
+<div>&gt;Since you ask whether KO should be created:</div>
+<div>&gt;in cases where genetic &quot;knock out is complete for both allele=
+s (may in fact be</div>
+<div>&gt;the case in most instances) I think it could be nice to have the t=
+erm &quot;knock</div>
+<div>&gt;out&quot;, but it is also ok to use &quot;knock down&quot; for in =
+all instances</div>
+<div>&gt;</div>
+<div>&nbsp;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>I have commented in the excel that it is=
+ good to use both terms in the appropriate places (as you have also suggest=
+ed): knock down and knock out</i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>I could not find child terms of </i></b>=
+<b><i>knock down and knock out</i></b></font></div>
+<div><font color=3D"#0070C0"><b><i>Sorry, n</i></b><b><i>ot sure what you m=
+ean by </i></b><b><i>=93</i></b><b><i>using the more specific terms rather =
+than the parent</i></b><b><i>=94</i></b></font></div>
+<div>&nbsp;</div>
+<div>&gt;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp;&nbsp;&nbsp; 2.- In many cases the Scicura term refers =
+to purified protein and</div>
+<div>&gt;&gt;you have proposed using 'partially purified' instead of 'purif=
+ied' in</div>
+<div>&gt;&gt;some -but not all- cases. For example, termID:280919 (recombin=
+ant</div>
+<div>&gt;&gt;mutated TF with HA tag purified from E.coli cell extract) has =
+been mapped as</div>
+<div>&gt;'partially purified'.</div>
+<div>&gt;&gt;However, termID:280920 (recombinant mutated TF with Biotin tag=
+ purified</div>
+<div>&gt;&gt;from E.coli cell extract) has not been mapped to anything at a=
+ll. I</div>
+<div>&gt;&gt;imagine this is just an oversight, is there any reason why som=
+e cases</div>
+<div>&gt;&gt;have been mapped and others not? Also, what's the reason for u=
+sing</div>
+<div>&gt;&gt;'partially purified' instead of 'purified'?</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;It seemed a bit less risky with 'partially', I was not sure which =
+degree of</div>
+<div>&gt;purification you require for &quot;purified&quot;</div>
+<div>&gt;</div>
+<div>&gt;If you say &quot;purified&quot; is ok, it's fine with me</div>
+<div>&gt;</div>
+<div>&gt;&gt;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>So, I=92ve stated =93ok=94 for all insta=
+nces of =93purified=94 that you have suggested</i></b></font></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&gt;&gt; &nbsp;&nbsp;&nbsp; 3.- termID:206990 (knock down by siRNA int=
+erference with TF</div>
+<div>&gt;&gt;expression) has been mapped to 'subcellular preparation', but =
+I cannot</div>
+<div>&gt;&gt;see anything in the name or description of the term that point=
+s out why</div>
+<div>&gt;&gt;a subcellular fraction is used here. Could you please explain =
+why did</div>
+<div>&gt;&gt;you map it to 'subcellular preparation'?</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;My mistake, sorry! Thank you for pointing it out</div>
+<div>&gt;</div>
+<div>&gt;&gt;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>Ok, as suggested by you</i></b></font></=
+div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&gt;&gt; &nbsp;&nbsp;&nbsp; 4.- There are several cases in which I sug=
+gest to use the term 'endogenous'</div>
+<div>&gt;&gt;additionally to signify that the endogenous protein was used i=
+n the assay.</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;Yes, thank you, I agree the term should be there</div>
+<div>&gt;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>Yes, fine as suggested by you </i></b></=
+font></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp;&nbsp;&nbsp; 5.- Finally, in some other cases, the term=
+ hints that a cell</div>
+<div>&gt;&gt;lysate has been used. I have added this term as well, although=
+ I saw no</div>
+<div>&gt;&gt;references to it from your side.</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;Yes, thank you, I agree the term should be there</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>I think I=92ve checked all instances and=
+ seen that they are ok as suggested by you</i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;I have also been checking the 'rules' file you have been putti=
+ng</div>
+<div>&gt;&gt;together with Sandra (also attached). Most importantly, there =
+is one sheet,</div>
+<div>&gt;called 'Int.</div>
+<div>&gt;&gt;methods vs part. methods' where there are a few suggested mapp=
+ings that</div>
+<div>&gt;&gt;have not been validated on your side. Would you please have a =
+look and</div>
+<div>&gt;&gt;let us know if the proposed terms are fine?</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;Yes, I think these mappings should be fine, thank you!</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div><font color=3D"#0070C0"><b>[Astrid L=E6greid] </b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b>Yes, look fine</b></font></div>
+<div>&nbsp;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;Also, I found two experimental methods in the plain_example ta=
+ble that</div>
+<div>&gt;&gt;are not mapped in 'rules': reporter gene assay (SC-ID:206987) =
+and</div>
+<div>&gt;&gt;southwestern blot (SC-ID:206917). For the first one, I propose=
+ using</div>
+<div>&gt;&gt;this MI term, please check and tell me if that's fine:</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;<a href=3D"http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=3D=
+http%3A%2F%2Fpurl.obol">http://www.ebi.ac.uk/ols/ontologies/mi/terms?iri=3D=
+http%3A%2F%2Fpurl.obo</a></div>
+<div>&gt;l</div>
+<div>&gt;&gt;i</div>
+<div>&gt;&gt;brary.org%2Fobo%2FMI_1088</div>
+<div>&gt;&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;To me, the suggested term, &quot;phenotype-based detection assay&q=
+uot;, does not</div>
+<div>&gt;seem optimal, because in the experiments we curate in many cases a=
+ssass the</div>
+<div>&gt;DbTF regulation of specific promoters (those of the specific targe=
+t genes); I've</div>
+<div>&gt;understood from Sandra that there is currently no term for reporte=
+r gene</div>
+<div>&gt;</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>Not quite sure how the reporter gene ass=
+ay issue is best solved in intAct/psi-mi =96 maybe we should try to do a sk=
+ype on that?</i></b></font></div>
+<div>&gt;</div>
+<div>&gt;&gt;For southwestern blot there is just no term in the MI vocabula=
+ry, but I</div>
+<div>&gt;&gt;can create one, if that's OK.</div>
+<div>&gt;</div>
+<div>&gt;[Astrid L=E6greid] ]<b><i>(20.09.17)</i></b></div>
+<div>&gt;</div>
+<div>&gt;Yes, fine, thank you</div>
+<div>&gt;</div>
+<div>&gt;---</div>
+<div><font color=3D"#0070C0"><b><i>[Astrid L=E6greid] </i></b></font></div>
+<div><font color=3D"#0070C0">&nbsp;</font></div>
+<div><font color=3D"#0070C0"><b><i>So, yes, good, if can be created</i></b>=
+</font></div>
+<div>&gt;</div>
+<div>&gt;Please alert me on issues I may have overlooked</div>
+<div>&gt;</div>
+<div>&gt;Best whishes</div>
+<div>&gt;Astrid</div>
+<div>&gt;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;I think that's it. Once we have all these issues solved, I hop=
+e I can</div>
+<div>&gt;&gt;create a comprehensive set of mapping tables and generate the =
+mappings.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;Cheers,</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;Pablo.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;On 15/09/2017 20:20, Astrid L=E6greid wrote:</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Hi Pablo,</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Here=92s a try for the TF =96 see added column =93experim=
+ental preparation=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; I did not specify</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -&quot;engineered&quot; because it applies to all recombi=
+nant TFs, so hopeully</div>
+<div>&gt;&gt;&gt; &nbsp;easy for you to add</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -&nbsp;conformational status &quot;native&quot; because I=
+ think it applies to all MF</div>
+<div>&gt;&gt;&gt; annotations (template 1 and 3), unless you consider TFs w=
+ith tags to</div>
+<div>&gt;&gt;&gt; not have native conformation; so, hopefully also easy for=
+ you to add</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -=93in vitro translated protein=94 because it is stated i=
+n the term</div>
+<div>&gt;&gt;&gt; whenever this applies</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; For the TG, I did not prepare a specific file with annota=
+tions,</div>
+<div>&gt;&gt;&gt; because I think it could go by method</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; MF, template 1, 3</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -All are =93native=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -EMSA: =93engineered=94 and =93partially purified=94</div=
+>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -ChIP: &nbsp;=93partially purified=94 (if the immunopreci=
+pitation counts as</div>
+<div>&gt;&gt;&gt; purification), =93naturally occuring=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; BP: template 1,3</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -Reportergene: =93native=94, =93engineered=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -PCR: =93native=94, =93naturally occuring=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; -Northern: =93native=94, =93naturally occuring=94</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Please tell me if anything is unclear or you would like s=
+ome more</div>
+<div>&gt;&gt;&gt; from me</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Best wishes</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Astrid</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;--</div>
+<div>&gt;&gt;----------------------------------------------</div>
+<div>&gt;&gt;Pablo Porras Mill=E1n, Ph.D.</div>
+<div>&gt;&gt;Molecular Interactions Project Leader</div>
+<div>&gt;&gt;European Molecular Biology Laboratory</div>
+<div>&gt;&gt;European Bioinformatics Institute (EMBL-EBI) Wellcome Genome C=
+ampus</div>
+<div>&gt;&gt;Hinxton Cambridge CB10 1SD United Kingdom</div>
+<div>&gt;&gt;Tel:&nbsp;&nbsp;&nbsp;&nbsp; &#43;44 1223 494482</div>
+<div>&gt;&gt;email:&nbsp; <a href=3D"mailto:pporras@ebi.ac.uk">pporras@ebi.=
+ac.uk</a></div>
+<div>&gt;&gt;URL:&nbsp;&nbsp;&nbsp; <a href=3D"http://www.ebi.ac.uk/intact/=
+main.xhtml">http://www.ebi.ac.uk/intact/main.xhtml</a></div>
+<div>&gt;&gt;----------------------------------------------</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+</span></font>
+</body>
+</html>
+
+--_000_0661f132e03145919f542f4ff2e75ff5itex10winntnuno_--
