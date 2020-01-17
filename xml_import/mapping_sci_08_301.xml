@@ -9,59 +9,51 @@
                 <value>\t</value>
             </entry>
             <entry>
-                <key>22</key>
+                <key>24</key>
                 <value>\|</value>
             </entry>
             <entry>
-                <key>23</key>
+                <key>25.0.9</key>
+                <value>\|</value>
+            </entry>
+            <entry>
+                <key>25</key>
                 <value>;</value>
             </entry>
             <entry>
-                <key>23.0.20.0</key>
-                <value>\$</value>
+                <key>25.0.9.0</key>
+                <value>\&amp;</value>
             </entry>
             <entry>
-                <key>23.0.21.0</key>
-                <value>\$</value>
-            </entry>
-            <entry>
-                <key>23.0</key>
-                <value>,</value>
-            </entry>
-            <entry>
-                <key>23.0.20</key>
+                <key>25.0.24</key>
                 <value>\|</value>
             </entry>
             <entry>
-                <key>22.0</key>
-                <value>\$</value>
-            </entry>
-            <entry>
-                <key>21.0</key>
-                <value>\$</value>
-            </entry>
-            <entry>
-                <key>7</key>
+                <key>25.0.23</key>
                 <value>\|</value>
             </entry>
             <entry>
-                <key>23.0.21</key>
-                <value>\|</value>
+                <key>25.0.23.0</key>
+                <value>\&amp;</value>
             </entry>
             <entry>
-                <key>7.0</key>
-                <value>\$</value>
+                <key>25.0.24.0</key>
+                <value>\&amp;</value>
             </entry>
             <entry>
-                <key>23.0.6.0</key>
-                <value>\$</value>
+                <key>25.0</key>
+                <value>\£</value>
             </entry>
             <entry>
-                <key>23.0.6</key>
-                <value>\|</value>
+                <key>24.0</key>
+                <value>\&amp;</value>
             </entry>
             <entry>
-                <key>21</key>
+                <key>10.0</key>
+                <value>\&amp;</value>
+            </entry>
+            <entry>
+                <key>10</key>
                 <value>\|</value>
             </entry>
         </separators>
@@ -76,90 +68,246 @@
         <associatedDictionaryColumn/>
         <associatedDuplicableFields>
             <entry>
-                <key>0.3.4.0.0.0.3.0</key>
-                <value>0.21</value>
+                <key>0.3.4.0.0.0.3.1</key>
+                <value>0.24</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1</key>
+                <value>0.10</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.7.0</key>
-                <value>0.23.0.20</value>
+                <value>0.25.0.23</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0</key>
-                <value>0.23</value>
+                <value>0.25</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.2.0</key>
-                <value>0.23.0.6</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0</key>
-                <value>0.7</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.16.1</key>
-                <value>0.22</value>
+                <key>0.3.4.0.0.0.6.0.2.1</key>
+                <value>0.25.0.9</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.9.0</key>
-                <value>0.23.0.21</value>
+                <value>0.25.0.24</value>
             </entry>
         </associatedDuplicableFields>
         <associatedFields>
             <entry>
                 <key>0.3.4.0.0.0.6.0.2.0.1</key>
-                <value>0.23.0.6.0.2</value>
+                <value>0.25.0.8</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.2.0.2</key>
-                <value>0.23.0.6.0.0</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.0.0</key>
-                <value>0.23.0.21.0.3</value>
+                <value>0.25.0.6</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.2.0.0</key>
-                <value>0.23.0.6.0.1</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.16.0.0</key>
-                <value>0.19</value>
+                <value>0.25.0.7</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.4.0.2.0.2</key>
-                <value>0.23.0.14</value>
+                <value>0.25.0.17</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.16.0.1</key>
-                <value>0.20</value>
+                <key>0.3.4.0.0.0.16.2.0</key>
+                <value>0.33</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.3.0.1.0</key>
-                <value>0.23.0.3</value>
+                <key>0.3.4.0.0.0.16.2.1</key>
+                <value>0.34</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.2.0.0.0.5</key>
-                <value>0.11</value>
+                <value>0.14</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.2.0.0.0.6</key>
-                <value>0.12</value>
+                <value>0.15</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.10.0.2.0</key>
+                <value>0.25.0.18</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.2.0.0.0.0</key>
-                <value>0.9</value>
+                <value>0.12</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.2.0.0.0.1</key>
-                <value>0.10</value>
+                <value>0.13</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.1.0.2</key>
-                <value>0.23.0.21.0.4</value>
+                <key>0.3.4.0.0.0.6.0.1.2</key>
+                <value>0.25.0.0</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.2.0.0.0.2</key>
+                <value>0.11</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.4.0.2.0</key>
+                <value>0.17</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.1.2.0</key>
+                <value>0.25.0.2</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.1.2.1</key>
+                <value>0.25.0.1</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.3.0.0</key>
+                <value>0.25.0.24.0.1</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.4.0.3.0.0</key>
+                <value>0.17</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.4.0.1.0</key>
+                <value>0.25.0.16</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.3.0.3.1.0.2</key>
+                <value>0.25.0.15</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.7.0.1.0</key>
+                <value>0.25.0.23.0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1.1</key>
+                <value>0.10.0.2</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1.0</key>
+                <value>0.10.0.1</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.14.0.1</key>
+                <value>0.25.0.12</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.14.0.0</key>
+                <value>0.25.0.11</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1.2</key>
+                <value>0.10.0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.2</key>
+                <value>0.25.0.19</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.0</key>
+                <value>0.25.0.20</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.1</key>
+                <value>0.25.0.21</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.1.0</key>
+                <value>0.30</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.1.1</key>
+                <value>0.31</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.5.0</key>
+                <value>0.39</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.5.1</key>
+                <value>0.40</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.8.0.0</key>
+                <value>0.44</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.1.1</key>
+                <value>0.24.0.2</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.1.2</key>
+                <value>0.24.0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.1.0</key>
+                <value>0.24.0.1</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.1.0</key>
+                <value>0.25.0.24.0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.5.0.0</key>
+                <value>0.19</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.0.2</key>
+                <value>0.7</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.0.1</key>
+                <value>0.9</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.0.0</key>
                 <value>0.8</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.0.6</key>
+                <value>0.3</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.0.5</key>
+                <value>0.2</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.3.0.3.0.0</key>
+                <value>0.25.0.14</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.10.0.1</key>
+                <value>0.25.0.22</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.0.6</key>
+                <value>0.3</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.0.0</key>
+                <value>0.25.0.24.0.3</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.0.0</key>
+                <value>0.27</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.0.1</key>
+                <value>0.28</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.3.0.1.2</key>
+                <value>0.25.0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.4.0</key>
+                <value>0.39</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.4.1</key>
+                <value>0.40</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.1.0.2</key>
+                <value>0.25.0.24.0.4</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.5.1.0.6</key>
@@ -167,27 +315,23 @@
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.3.0.2</key>
-                <value>0.21.0.0</value>
+                <value>0.21</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.0.5</key>
+                <value>0.2</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.3.0.1</key>
-                <value>0.21.0.2</value>
+                <value>0.23</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.3.0.0</key>
-                <value>0.21.0.1</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.3.0.0</key>
-                <value>0.23.0.21.0.1</value>
+                <value>0.22</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.5.1.0.0</key>
                 <value>0.0</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.4.0.3.0.0</key>
-                <value>0.14</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.5.1.0.1</key>
@@ -195,31 +339,47 @@
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.5.1.0.2</key>
-                <value>0.17</value>
+                <value>0.20</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.4</key>
+                <value>0.38</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.5</key>
+                <value>0.43</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.5.1.0.5</key>
                 <value>0.2</value>
             </entry>
             <entry>
+                <key>0.3.4.0.0.0.16.2</key>
+                <value>0.32</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.3</key>
+                <value>0.35</value>
+            </entry>
+            <entry>
                 <key>0.3.4.0.0.0.16.0</key>
-                <value>0.18</value>
+                <value>0.26</value>
+            </entry>
+            <entry>
+                <key>0.3.5.2.0</key>
+                <value>0.5</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.16.1</key>
-                <value>0.22.0.0</value>
+                <value>0.29</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.4.0.1.0</key>
-                <value>0.23.0.13</value>
+                <key>0.3.5.2.1</key>
+                <value>0.6</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.3.0.3.1.0.2</key>
-                <value>0.23.0.12</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.7.0.1.0</key>
-                <value>0.23.0.20.0.0</value>
+                <key>0.3.4.0.0.0.6.0.14.0</key>
+                <value>0.25.0.10</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.8.1.0.1</key>
@@ -228,6 +388,10 @@
             <entry>
                 <key>0.3.4.0.0.0.8.1.0.0</key>
                 <value>0.0</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.8.1.0.2</key>
+                <value>0.45</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.8.1.0.5</key>
@@ -239,122 +403,106 @@
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.6.0.0.0.0</key>
-                <value>0.23.0.21.0.3</value>
+                <value>0.25.0.24.0.3</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.5.0.0.10.0.0</key>
-                <value>0.5</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.10.0.1</key>
-                <value>0.6</value>
+                <key>0.3.4.0.0.0.6.0.2.1.2</key>
+                <value>0.25.0.9.0.0</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.6.0.0.1.0.2</key>
-                <value>0.23.0.21.0.4</value>
+                <value>0.25.0.24.0.4</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.2</key>
-                <value>0.23.0.16</value>
+                <key>0.3.4.0.0.0.6.0.2.1.0</key>
+                <value>0.25.0.9.0.1</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.0</key>
-                <value>0.23.0.17</value>
+                <key>0.3.4.0.0.0.6.0.2.1.1</key>
+                <value>0.25.0.9.0.2</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.10.0.3.1.0.1</key>
-                <value>0.23.0.18</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.10.0</key>
-                <value>0.4</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.16.1.0</key>
-                <value>0.22.0.1</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.16.1.1</key>
-                <value>0.22.0.2</value>
+                <key>0.3.4.0.0.0.16.3.0</key>
+                <value>0.36</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.7.0.2.0.2</key>
-                <value>0.23.0.20.0.1</value>
+                <value>0.25.0.23.0.1</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.4.0</key>
-                <value>0.23.0.10</value>
+                <value>0.25.0.13</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.16.3.1</key>
+                <value>0.37</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.2.0.2</key>
-                <value>0.23.0.3</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.3.1.0.2</key>
-                <value>0.23.0.21.0.2</value>
+                <value>0.25.0.3</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.2.0.1</key>
-                <value>0.23.0.5</value>
+                <value>0.25.0.5</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.3.1.0.2</key>
+                <value>0.25.0.24.0.2</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.2.0.0</key>
-                <value>0.23.0.4</value>
+                <value>0.25.0.4</value>
+            </entry>
+            <entry>
+                <key>0.3.5.2</key>
+                <value>0.4</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.3.0.1.2.0</key>
+                <value>0.25.0.2</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.3.0.1.2.1</key>
+                <value>0.25.0.1</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.6</key>
+                <value>0.3</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.5</key>
+                <value>0.2</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.2</key>
-                <value>0.15</value>
+                <value>0.18</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.10.0.3.0.0</key>
-                <value>0.23.0.15</value>
+                <value>0.25.0.18</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.5.0.0.4.0.1</key>
-                <value>0.13</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.1.0</key>
-                <value>0.23.0.21.0.0</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.5.0.0</key>
                 <value>0.16</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0.2</key>
-                <value>0.7.0.0</value>
+                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.0</key>
+                <value>0.41</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0.1</key>
-                <value>0.7.0.2</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0.0</key>
-                <value>0.7.0.1</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.3.0.3.0.0</key>
-                <value>0.23.0.11</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.6.0.10.0.1</key>
-                <value>0.23.0.19</value>
+                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.1</key>
+                <value>0.42</value>
             </entry>
         </associatedFields>
         <associatedFlatFiles>0.3.4.0.0.0</associatedFlatFiles>
         <associatedOpenDictionary/>
         <associatedValues>
             <entry>
-                <key>0.3.0.4.1.6</key>
-                <value>MI:0356</value>
-            </entry>
-            <entry>
                 <key>0.3.4.0.0.0.6.0.4.0.2.0.0</key>
                 <value>psi-mi</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.3.0.6</key>
+                <key>0.3.0.4.1.6</key>
                 <value>MI:0356</value>
             </entry>
             <entry>
@@ -378,12 +526,12 @@
                 <value>psi-mi</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.1.0.5</key>
-                <value>identity</value>
-            </entry>
-            <entry>
                 <key>0.3.0.4.1.1</key>
                 <value>MI:0488</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.9.0.6.0.2.1.0.5</key>
+                <value>identity</value>
             </entry>
             <entry>
                 <key>0.3.0.4.1.2</key>
@@ -394,12 +542,12 @@
                 <value>identity</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.6.0.2.0.6</key>
-                <value>MI:0356</value>
-            </entry>
-            <entry>
                 <key>0.3.0.4.1.5</key>
                 <value>identity</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.2.0.6</key>
+                <value>MI:0356</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.3.1.0.0</key>
@@ -422,16 +570,12 @@
                 <value>unspecified role</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.3.0.5</key>
-                <value>identity</value>
-            </entry>
-            <entry>
                 <key>0.3.0.2.0</key>
-                <value>ntnu</value>
+                <value>IntAct</value>
             </entry>
             <entry>
                 <key>0.3.0.2.1</key>
-                <value>Norwegian University of Science and Technology</value>
+                <value>European Bioinformatics Institute</value>
             </entry>
             <entry>
                 <key>0.3.5.0.0</key>
@@ -440,6 +584,10 @@
             <entry>
                 <key>0.3.5.0.1</key>
                 <value>MI:0957</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.6.0.13.0.0</key>
+                <value>0</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.3.1.0.6</key>
@@ -466,12 +614,12 @@
                 <value>identity</value>
             </entry>
             <entry>
-                <key>0.3.4.0.0.0.8.1.0.2</key>
-                <value>MI:0914</value>
-            </entry>
-            <entry>
                 <key>0.3.4.0.0.0.6.0.5.1.0.6</key>
                 <value>MI:0356</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1.5</key>
+                <value>identity</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.6.0.2.0.0</key>
@@ -494,6 +642,10 @@
                 <value>identity</value>
             </entry>
             <entry>
+                <key>0.3.4.0.0.0.5.0.0.3.1.6</key>
+                <value>MI:0356</value>
+            </entry>
+            <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.3.1.0.6</key>
                 <value>MI:0356</value>
             </entry>
@@ -510,12 +662,20 @@
                 <value>MI:0356</value>
             </entry>
             <entry>
+                <key>0.3.4.0.0.0.3.1.5</key>
+                <value>identity</value>
+            </entry>
+            <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.6.0.0.1.0.0</key>
                 <value>psi-mi</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.10.0.3.1.0.5</key>
                 <value>identity</value>
+            </entry>
+            <entry>
+                <key>0.3.4.0.0.0.3.1.6</key>
+                <value>MI:0356</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.3.0.2.0.5</key>
@@ -538,16 +698,24 @@
                 <value>14681455</value>
             </entry>
             <entry>
+                <key>0.3.4.0.0.0.6.0.2.1.6</key>
+                <value>MI:0356</value>
+            </entry>
+            <entry>
                 <key>0.3.4.0.0.0.6.0.7.0.2.0.6</key>
                 <value>MI:0356</value>
+            </entry>
+            <entry>
+                <key>0.3.0.4.0.5</key>
+                <value>primary-reference</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.3.1.0.0</key>
                 <value>psi-mi</value>
             </entry>
             <entry>
-                <key>0.3.0.4.0.5</key>
-                <value>primary-reference</value>
+                <key>0.3.4.0.0.0.6.0.2.1.5</key>
+                <value>identity</value>
             </entry>
             <entry>
                 <key>0.3.0.4.0.6</key>
@@ -556,10 +724,6 @@
             <entry>
                 <key>0.3.4.0.0.0.6.0.9.0.3.1.0.1</key>
                 <value>MI:0488</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.8.0.0</key>
-                <value>association</value>
             </entry>
             <entry>
                 <key>0.3.4.0.0.0.6.0.5.0.0</key>
@@ -576,22 +740,6 @@
             <entry>
                 <key>0.3.0.4.1.7.0</key>
                 <value>http://www.ebi.ac.uk</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.6</key>
-                <value>MI:0356</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.5</key>
-                <value>identity</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.0</key>
-                <value>intact</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.4.0.3.1.0.1</key>
-                <value>MI:0469</value>
             </entry>
             <entry>
                 <key>0.3.5.1.0</key>
@@ -633,14 +781,6 @@
                 <key>0.3.4.0.0.0.6.0.7.0.2.0.0</key>
                 <value>psi-mi</value>
             </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0.6</key>
-                <value>MI:0356</value>
-            </entry>
-            <entry>
-                <key>0.3.4.0.0.0.5.0.0.3.0.5</key>
-                <value>identity</value>
-            </entry>
         </associatedValues>
         <autoDuplicate>false</autoDuplicate>
         <expendChoices>0.3.5.0</expendChoices>
@@ -649,18 +789,32 @@
         <expendChoices>(interaction | abstractInteraction)</expendChoices>
         <expendChoices>0.3.4.0.0</expendChoices>
         <expendChoices>interaction</expendChoices>
-        <expendChoices>0.3.4.0.0.0.5.0</expendChoices>
-        <expendChoices>experimentDescription</expendChoices>
-        <expendChoices>0.3.4.0.0.0.5.0.0.2.0</expendChoices>
-        <expendChoices>(xref &amp; attributeList)</expendChoices>
         <expendChoices>0.3.4.0.0.0.16.0</expendChoices>
         <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.16.0</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.16.2</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.16.0</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.5.1</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.5.0</expendChoices>
+        <expendChoices>experimentDescription</expendChoices>
+        <expendChoices>0.3.4.0.0.0.16.0</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.5.0.0.2.0</expendChoices>
+        <expendChoices>(xref &amp; attributeList)</expendChoices>
         <expendChoices>0.3.4.0.0.0.6.0.3</expendChoices>
         <expendChoices>interactor</expendChoices>
+        <expendChoices>0.3.4.0.0.0.6.0.3.0.2.1</expendChoices>
+        <expendChoices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+        <expendChoices>0.3.4.0.0.0.6.0.13</expendChoices>
+        <expendChoices>stoichiometry</expendChoices>
         <id></id>
         <manageChoices>true</manageChoices>
         <name></name>
-        <schemaURL>/Users/pporras/Documents/Curation_tools/MIF300.xsd</schemaURL>
+        <schemaURL>/Users/pporras/Documents/Curation_tools/MIF300.1.xsd</schemaURL>
         <validationRegexps/>
     </tree>
 </mapping>

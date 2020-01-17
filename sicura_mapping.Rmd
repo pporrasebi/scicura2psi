@@ -5,6 +5,10 @@ output:
     df_print: paged
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,eval = TRUE)
+```
+
 ## Synopsis
 
 This is an attempt to generate a map of Scicura plain text file export to a format we can use to generate a PSI-MI XML file to import into IntAct and generate a proper MITAB through that. 
@@ -12,21 +16,22 @@ This is an attempt to generate a map of Scicura plain text file export to a form
 #### Libraries
 ```{r libraries, warning=FALSE,message=FALSE}
 library(data.table)
-library(xlsx)
+library(readxl)
 library(dplyr)
 library(splitstackshape)
-library(BridgeDbR)
+# library(BridgeDbR)
 ```
 
 ## Import required files
 I start by importing the Scicura database contents.
 ```{r upload}
 # Import Scicura database
-scicura_db <- data.table(read.xlsx2("./scicura_files/scicura_annotation.xlsx",
-                         sheetName = "plain_example",
-                         header = T,
-                         colClasses = "character",
-                         stringsAsFactors=FALSE))
+scicura_db <- data.table(read_excel("./scicura_files/scicura_annotation.xlsx",
+                         sheet = "plain_example",
+                         col_names = T,
+                         col_types = "guess"),
+                         check.names = T,
+                         stringsAsFactors=FALSE)
 ```
 
 ## Mapping
@@ -98,11 +103,12 @@ scicura_db_id <- scicura_db[TF.ID!="" & TG.ID!="",
 All methods were mapped in the 'experiments.xlsx' file. The Scicura experimental method 'reporter gene assay' (SCI:206987) could not be mapped to any interaction detection method and has been mapped to 'unspecified method' (MI:0686). 
 ```{r map_idm}
 # Import rules
-sci2psi <- data.table(read.xlsx2("./scicura_files/experiments.xlsx",
-                                 sheetName = "Sheet1",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+sci2psi <- data.table(read_excel("./scicura_files/experiments.xlsx",
+                                 sheet = "Sheet1",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 check.names = T,
+                                 stringsAsFactors=F)
 
 sci2psi_simple <- sci2psi[,.(termID,
                              termName,
@@ -122,11 +128,12 @@ setnames(map_sci_1,c("termName","MI_code"),c("exp_met_name","exp_met_mi"))
 This is taken from the mapping sheet 'Int. methods vs part. methods ' in the 'rules_ppm.xlsx'. 
 ```{r add_part_det_met}
 # Import rules
-idm2pdm <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "Int. methods vs part. methods ",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+idm2pdm <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "Int. methods vs part. methods ",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                      check.names = T)
 
 idm2pdm_simple <- idm2pdm[,.(intdetmet_mi,
                              partdetmet_A,
@@ -148,11 +155,12 @@ There might be conflicts between the cell line stated in the 'cell line' field o
 ```{r host}
 # Import rules
 # For method
-idm2hostorg <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "int. methods vs host organism",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+idm2hostorg <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "int. methods vs host organism",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 idm2hostorg_simple <- idm2hostorg[,.(idm_mi = gsub('".*','',gsub(".*MI:","MI:",Interaction.detection.method)),
                                      host = ifelse(grepl("-1",Host.organism),
@@ -160,11 +168,12 @@ idm2hostorg_simple <- idm2hostorg[,.(idm_mi = gsub('".*','',gsub(".*MI:","MI:",I
                                                    ""))]
 
 # For cell line
-scihost2intacthost <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "Scicura vs Intact host org.",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+scihost2intacthost <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "Scicura vs Intact host org.",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 intact_host_mis <- fread("./scicura_files/intact_organisms.txt",
                          header=T,
@@ -225,7 +234,7 @@ map_sci_4 <- map_sci_4[,host_check := ifelse(host=="-1" & intact_host_taxid == "
 
 table(map_sci_4$host_check,useNA = "ifany")
 ```
-There are 149 non-mappable cases in this first iteration, plus 26 cases wehre Scicura curators specified a cell line but the specific interaction detection method used suggests the experiment may have been performed in vitro. The non-mappable cases will not be included in this first import test and in the ones with conflict we will take the cell line as host organism. 
+There are 149 non-mappable cases in this first iteration, plus 26 cases where Scicura curators specified a cell line but the specific interaction detection method used suggests the experiment may have been performed in vitro. The non-mappable cases will not be included in this first import test and in the ones with conflict we will take the cell line as host organism. 
 
 ```{r host_checker}
 map_sci_4 <- data.table(mutate(map_sci_4, 
@@ -250,17 +259,19 @@ map_sci_4 <- data.table(mutate(map_sci_4,
                                                              host_check == "conflict, take intact_host",
                                                      intact_host_ac,
                                                      NA))))
+table(map_sci_4$host_check,useNA = "ifany")
 ```
 
 ##### 4: Bringing in the participant type
 Participant type is always protein for TFs and different types of nucleic acid-related terms for the TG. The TG type can be inferred from the interaction detection methods, as given by the 'int. methods vs int. type B' in the 'rules_ppm.xlsx' file. 
 ```{r part_type}
 # Import rules
-idm2irtypepb <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "int. methods vs int. type B",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+idm2irtypepb <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "int. methods vs int. type B",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 idm2irtypepb_simple <- idm2irtypepb[,.(idm_mi = gsub('".*','',gsub(".*MI:","MI:",Interaction.detection.method)),
                                        pB_type = gsub("\\)","",gsub(".*\\(","",Interactor.type.B)),
@@ -302,22 +313,24 @@ Some methods force certain features to be present in the TG field and TF feature
 ```{r feat_import}
 # Import rules
 # For TGs
-idm2featpb <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "int. methods vs feature int. B",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+idm2featpb <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "int. methods vs feature int. B",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 idm2featpb_simple <- idm2featpb[,.(idm_mi = intdetmet_mi,
                                    feattype_B,
                                    feattype_mi_B)]
 
 # For TFs
-tfterm2feat <- data.table(read.xlsx2("./scicura_files/rules_ppm.xlsx",
-                                 sheetName = "tf repr. vs feature int. A",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+tfterm2feat <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
+                                 sheet = "tf repr. vs feature int. A",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 tfterm2feat_simple <- tfterm2feat[,.(termID,
                                     feattype_A,
@@ -376,11 +389,12 @@ This is probably the most complicated field to map, since it opens up several di
 Once imported, information needs proper clean-up. 
 ```{r map_tf_descr}
 # Import rules
-tf_repr <- data.table(read.xlsx2("./scicura_files/TF_representation_comparison.xlsx",
-                                 sheetName = "sheet1",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+tf_repr <- data.table(read_excel("./scicura_files/TF_representation_comparison.xlsx",
+                                 sheet = "sheet1",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 
 tf_repr_sel <- tf_repr[,.(termID,
                              exp_preps = exp_prep_ppm,
@@ -507,11 +521,12 @@ setnames(map_sci_14,
 This is taken from the 'TG_dictionary_SO_150917.xlsx' file. Will be mapped as xrefs to SO. 
 ```{r tg_map}
 # Import rules
-tg_repr2so <- data.table(read.xlsx2("./scicura_files/TG_dictionary_SO_150917.xlsx",
-                                 sheetName = "Sheet1",
-                                 header = T,
-                                 colClasses = "character",
-                                 stringsAsFactors=F))
+tg_repr2so <- data.table(read_excel("./scicura_files/TG_dictionary_SO_150917.xlsx",
+                                 sheet = "Sheet1",
+                                 col_names = T,
+                                 col_types = "text"),
+                                 stringsAsFactors=F,
+                          check.names = T)
 tg_repr2so_simple <- tg_repr2so[,.(termID,
                                    so_type_xref = gsub(".*\\(","",gsub("\\)","",SO.type)),
                                    so_type_db = ifelse(SO.type!="",
@@ -539,67 +554,90 @@ map_sci_15 <- unique(merge(map_sci_14,
 tg_nonrepr <- unique(map_sci_15[is.na(so_type_xref),.(TG.Repr.SC.ID,
                                          TG.Representation)])
 ```
-It seems there are some TG representation values that are not mappable to the SO, as listed in this table:  
+It seems there are some TG representation values that are not mappable to the SO, as listed in this table: `r tg_nonrepr`
 
-`r tg_nonrepr`  
+
 
 ##### 8: Mapping Entrez IDs to ENSEMBL
 
-TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMBL for import. I do that using BridgeDBR. There is a mix of human, mouse and rat identifiers in the TG participants, but the species is not provided, so I will need to run the mapping several times.  
+TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMBL for import. I do that using BridgeDBR. There is a mix of human, mouse and rat identifiers in the TG participants, but the species is not provided, so I will need to run the mapping several times. 
+
+NOTE: this bit is not working at the moment due to the rJava installation problem. 
 ```{r entrez_map,message=FALSE}
-tg_entrez_map <- unique(map_sci_15[,.(TG.ID,
-                                      TG_ensembl = "")])
+# tg_entrez_map <- unique(map_sci_15[,.(TG.ID,
+#                                       TG_ensembl = "")])
+# 
+# # Round 1 mapping
+# location <- getDatabase("Homo sapiens")
+# mapper <- loadDatabase(location)
+# 
+# for (i in 1:nrow(tg_entrez_map)){
+#         tg_entrez_map[i,]$TG_ensembl <- paste(map(mapper, "L", tg_entrez_map[i,]$TG.ID, "En"),collapse=";")
+# }
+# 
+# tg_entrez_map <- data.table(mutate(tg_entrez_map,
+#                                    tg_taxid = 
+#                                            ifelse(TG_ensembl=="",
+#                                                   "10090",
+#                                                   "9606")))
+# # Round 2 mapping
+# location2 <- getDatabase("Mus musculus")
+# mapper2 <- loadDatabase(location2)
+# 
+# for (i in 1:nrow(tg_entrez_map[tg_taxid=="10090"])){
+#         tg_entrez_map[tg_taxid=="10090"][i,]$TG_ensembl <- paste(map(mapper2, "L", tg_entrez_map[tg_taxid=="10090"][i,]$TG.ID, "En"),collapse=";")
+# }
+# 
+# tg_entrez_map <- data.table(mutate(tg_entrez_map,
+#                                    tg_taxid = 
+#                                            ifelse(TG_ensembl=="",
+#                                                   "10116",
+#                                                   tg_taxid)))
+# 
+# # Round 3 mapping
+# location3 <- getDatabase("Rattus norvegicus")
+# mapper3 <- loadDatabase(location3)
+# 
+# for (i in 1:nrow(tg_entrez_map[tg_taxid=="10116"])){
+#         tg_entrez_map[tg_taxid=="10116"][i,]$TG_ensembl <- paste(map(mapper3, "L", tg_entrez_map[tg_taxid=="10116"][i,]$TG.ID, "En"),collapse=";")
+# }
+# 
+# # Entries not mapped are checked in Entrez and the correct species is given
+# tg_entrez_map <- data.table(mutate(tg_entrez_map,
+#                                    tg_taxid = 
+#                                            ifelse(TG.ID=="111519",
+#                                                   "10090",
+#                                                   ifelse(TG.ID=="3492",
+#                                                          "9606",
+#                                                          tg_taxid)),
+#                                    tg_ensembl_db = ifelse(TG_ensembl!="",
+#                                                           "ensembl",
+#                                                           ""),
+#                                    tg_ensembl_db_mi = ifelse(TG_ensembl!="",
+#                                                           "MI:0476",
+#                                                           "")))
+# 
+# # Save tg_entrez_map so the above part does not have to be run again if there are problems with BridgeDBR
+# 
+# fwrite(
+#         tg_entrez_map,
+#         "./processed_files/tg_entrez_map.txt",
+#         col.names = T,
+#         row.names = F,
+#         sep = "\t",
+#         quote = F
+# )
 
-# Round 1 mapping
-location <- getDatabase("Homo sapiens")
-mapper <- loadDatabase(location)
+tg_entrez_map <- fread(
+        "./processed_files/tg_entrez_map.txt",
+        header = T,
+        check.names = T,
+        sep = "\t"
+)
 
-for (i in 1:nrow(tg_entrez_map)){
-        tg_entrez_map[i,]$TG_ensembl <- paste(map(mapper, "L", tg_entrez_map[i,]$TG.ID, "En"),collapse=";")
-}
-
-tg_entrez_map <- data.table(mutate(tg_entrez_map,
-                                   tg_taxid = 
-                                           ifelse(TG_ensembl=="",
-                                                  "10090",
-                                                  "9606")))
-# Round 2 mapping
-location2 <- getDatabase("Mus musculus")
-mapper2 <- loadDatabase(location2)
-
-for (i in 1:nrow(tg_entrez_map[tg_taxid=="10090"])){
-        tg_entrez_map[tg_taxid=="10090"][i,]$TG_ensembl <- paste(map(mapper2, "L", tg_entrez_map[tg_taxid=="10090"][i,]$TG.ID, "En"),collapse=";")
-}
-
-tg_entrez_map <- data.table(mutate(tg_entrez_map,
-                                   tg_taxid = 
-                                           ifelse(TG_ensembl=="",
-                                                  "10116",
-                                                  tg_taxid)))
-
-# Round 3 mapping
-location3 <- getDatabase("Rattus norvegicus")
-mapper3 <- loadDatabase(location3)
-
-for (i in 1:nrow(tg_entrez_map[tg_taxid=="10116"])){
-        tg_entrez_map[tg_taxid=="10116"][i,]$TG_ensembl <- paste(map(mapper3, "L", tg_entrez_map[tg_taxid=="10116"][i,]$TG.ID, "En"),collapse=";")
-}
-
-# Entries not mapped are checked in Entrez and the correct species is given
-tg_entrez_map <- data.table(mutate(tg_entrez_map,
-                                   tg_taxid = 
-                                           ifelse(TG.ID=="111519",
-                                                  "10090",
-                                                  ifelse(TG.ID=="3492",
-                                                         "9606",
-                                                         tg_taxid)),
-                                   tg_ensembl_db = ifelse(TG_ensembl!="",
-                                                          "ensembl",
-                                                          ""),
-                                   tg_ensembl_db_mi = ifelse(TG_ensembl!="",
-                                                          "MI:0476",
-                                                          "")))
 # Mapping to data
+
+# map_sci_15$TG.ID <- as.character(map_sci_15$TG.ID)
 map_sci_16 <- unique(merge(map_sci_15,
                            tg_entrez_map,
                            by = "TG.ID",
@@ -609,7 +647,7 @@ map_sci_16 <- unique(merge(map_sci_15,
 
 ##### 9: Obtaining taxids for TFs
 
-It seems the TFs do not proivde species information either. I obtain that from UniProt.
+It seems the TFs do not provide species information either. I obtain that from UniProt.
 ```{r up_info}
 # Obtain organism information
 tf_ids <- unique(rbind(unique(map_sci_16[,.(id = TF.ID)]),
@@ -624,7 +662,7 @@ fwrite(tf_ids,
        sep = "\t",
        quote = F)
 
-system("perl ./scripts/up_query.pl ./processed_files/tf_ids.txt > ./processed_files/tf_ids_org.txt")
+# system("perl ./scripts/up_query.pl ./processed_files/tf_ids.txt > ./processed_files/tf_ids_org.txt")
 
 tf_ids_org <- fread("./processed_files/tf_ids_org.txt",
                     header=F,
@@ -692,7 +730,7 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			xref_exp3_db_mi = ifelse(Cell.Line.ID!="",
 			                      "MI:0864",
 			                      ""),
-			pmid = paste(PubMed.ID,"_sci",sep=""),
+			pmid = PubMed.ID,
 			pubmed_ref = "pubmed",
 			pubmed_ref_mi = "MI:0446",
 			primary_ref = "primary-reference",
@@ -709,10 +747,10 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			fig_leg_type_mi = ifelse(Pub.Elem!="",
 			                      "MI:0599",
 			                      ""),
-			xref_int1 = vsmID,
+			xref_int1 = paste("vsmID: ",vsmID,sep=""),
 			xref_int1_db = "ntnu",
 			xref_int1_db_mi = "MI:1264",
-			xref_int2 = origVsmID,
+			xref_int2 = paste("origVsmID: ",origVsmID,sep=""),
 			xref_int2_db = "ntnu",
 			xref_int2_db_mi = "MI:1264",
 			xref_int3 = GO.ID,
@@ -728,8 +766,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			comment_int3_type = "comment",
 			comment_int3_type_mi = "MI:0612",
 			comment_int4 = Comments,
-			comment_int4_type = "comment",
-			comment_int4_type_mi = "MI:0612",
+			comment_int4_type = "remark-internal",
+			comment_int4_type_mi = "IA:0245",
 			part1_alias = TF.Gene.Name,
 			part1_alias_type = "gene name",
 			part1_alias_type_mi = "MI:0301",
@@ -897,8 +935,12 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			                   ""),
 			part3_phost_shtlbl = phost_shtlbl_tf2,
 			part3_phost_ac = phost_ac_tf2,
-			part3_phost_db = "",
-			part3_phost_dbmi = "",
+			part3_phost_db = ifelse(phost_shtlbl_tf2!="",
+			                        "intact",
+			                        ""),
+			part3_phost_dbmi = ifelse(phost_shtlbl_tf2!="",
+			                        "MI:0469",
+			                        ""),
 			part3_phost_taxid = phost_taxid_tf2,
 			part3_exp_prep_shtlbl = exp_prep_shtlbl_tf2,
 			part3_exp_prep_mi = exp_prep_mi_tf2,
@@ -977,8 +1019,12 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			                   ""),
 			part4_phost_shtlbl = phost_shtlbl_tf3,
 			part4_phost_ac = phost_ac_tf3,
-			part4_phost_db = "",
-			part4_phost_dbmi = "",
+			part4_phost_db = ifelse(phost_shtlbl_tf3!="",
+			                        "intact",
+			                        ""),
+			part4_phost_dbmi = ifelse(phost_shtlbl_tf3!="",
+			                        "MI:0469",
+			                        ""),
 			part4_phost_taxid = phost_taxid_tf3,
 			part4_exp_prep_shtlbl = exp_prep_shtlbl_tf3,
 			part4_exp_prep_mi = exp_prep_mi_tf3,
@@ -1057,8 +1103,12 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			                   ""),
 			part5_phost_shtlbl = phost_shtlbl_tf4,
 			part5_phost_ac = phost_ac_tf4,
-			part5_phost_db = "",
-			part5_phost_dbmi = "",
+			part5_phost_db = ifelse(phost_shtlbl_tf4!="",
+			                        "intact",
+			                        ""),
+			part5_phost_dbmi = ifelse(phost_shtlbl_tf4!="",
+			                        "MI:0469",
+			                        ""),
 			part5_phost_taxid = phost_taxid_tf4,
 			part5_exp_prep_shtlbl = exp_prep_shtlbl_tf4,
 			part5_exp_prep_mi = exp_prep_mi_tf4,
@@ -1083,7 +1133,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			                                ""),
 			part5_feat2_range_mi = ifelse(featshtlbl_tf4!="",
 			                                "MI:0339",
-			                                ""))]
+			                                ""),
+			Date)]
 
 for (col in colnames(preflatfile1)) preflatfile1[is.na(get(col)), (col) := ""]
 
@@ -1372,8 +1423,21 @@ preflatfile2 <- unique(preflatfile1[,
 		part5_feat2_type,
 		part5_feat2_type_mi,
 		part5_feat2_range,
-		part5_feat2_range_mi),
+		part5_feat2_range_mi,
+		Date),
                              by = xref_int1])
+
+check.prefl2 <- data.table(table(preflatfile2$xref_int1,useNA = "ifany"))
+
+check.prefl2.2 <- preflatfile2[xref_int1 %in% check.prefl2[N==2]$V1]
+fwrite(
+        check.prefl2.2,
+        "./processed_files/check.prefl2.2.txt",
+        col.names = T,
+        row.names = F,
+        sep = "\t",
+        quote = F
+)
 
 preflatfile3 <- preflatfile2[,.(psimi,
 			psi_mi_mi,
@@ -1382,9 +1446,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			comment_publ,
 			comment_publ_type,
 			comment_publ_type_mi,
-			xref_exp1_col = ifelse(xref_exp1!="",
-									paste(xref_exp1,xref_exp1_db,xref_exp1_db_mi,sep="&"),
-									""),
+			xref_exp1,
+			xref_exp1_db,
+			xref_exp1_db_mi,
 			xref_exp2_col = ifelse(xref_exp2!="",
 									paste(xref_exp2,xref_exp2_db,xref_exp2_db_mi,sep="&"),
 									""),
@@ -1401,29 +1465,14 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			host_ac,
 			int_det_met,
 			int_det_met_mi,
-			fig_leg,
-			fig_leg_type,
-			fig_leg_type_mi,
-			xref_int1_col = ifelse(xref_int1!="",
-									paste(xref_int1,xref_int1_db,xref_int1_db_mi,sep="&"),
-									""),
+			xref_int1,
+			xref_int1_db,
+			xref_int1_db_mi,
 			xref_int2_col = ifelse(xref_int2!="",
 									paste(xref_int2,xref_int2_db,xref_int2_db_mi,sep="&"),
 									""),
 			xref_int3_col = ifelse(xref_int3!="",
 									paste(xref_int3,xref_int3_db,xref_int3_db_mi,sep="&"),
-									""),
-			comment_int1_col = ifelse(comment_int1!="",
-									paste(comment_int1,comment_int1_type,comment_int1_type_mi,sep="&"),
-									""),
-			comment_int2_col = ifelse(comment_int2!="",
-									paste(comment_int2,comment_int2_type,comment_int2_type_mi,sep="&"),
-									""),
-			comment_int3_col = ifelse(comment_int3!="",
-									paste(comment_int3,comment_int3_type,comment_int3_type_mi,sep="&"),
-									""),
-			comment_int4_col = ifelse(comment_int4!="",
-									paste(comment_int4,comment_int4_type,comment_int4_type_mi,sep="&"),
 									""),
 			part1_alias,
 			part1_alias_type,
@@ -1431,9 +1480,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part1_id,
 			part1_id_db,
 			part1_id_db_mi,
-			part1_xref_col = ifelse(part1_xref_ac!="",
-									paste(part1_xref_ac,part1_xref_db,part1_xref_db_mi,sep="&"),
-									""),
+			part1_xref_ac,
+			part1_xref_db,
+			part1_xref_db_mi,
 			part1_xref2_col = ifelse(part1_xref2_ac!="",
 									paste(part1_xref2_ac,part1_xref2_db,part1_xref2_db_mi,sep="&"),
 									""),
@@ -1472,9 +1521,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part2_id,
 			part2_id_db,
 			part2_id_db_mi,
-			part2_xref_col = ifelse(part2_xref1!="",
-									paste(part2_xref1,part2_xref1_db,part2_xref1_db_mi,sep="&"),
-									""),
+			part2_xref1,
+			part2_xref1_db,
+			part2_xref1_db_mi,
 			part2_xref2_col = ifelse(part2_xref2!="",
 									paste(part2_xref2,part2_xref2_db,part2_xref2_db_mi,sep="&"),
 									""),
@@ -1513,9 +1562,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part3_id,
 			part3_id_db,
 			part3_id_db_mi,
-			part3_xref_col = ifelse(part3_xref_ac!="",
-									paste(part3_xref_ac,part3_xref_db,part3_xref_db_mi,sep="&"),
-									""),
+			part3_xref_ac,
+			part3_xref_db,
+			part3_xref_db_mi,
 			part3_xref2_col = ifelse(part3_xref2_ac!="",
 									paste(part3_xref2_ac,part3_xref2_db,part3_xref2_db_mi,sep="&"),
 									""),
@@ -1554,9 +1603,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part4_id,
 			part4_id_db,
 			part4_id_db_mi,
-			part4_xref_col = ifelse(part4_xref_ac!="",
-									paste(part4_xref_ac,part4_xref_db,part4_xref_db_mi,sep="&"),
-									""),
+			part4_xref_ac,
+			part4_xref_db,
+			part4_xref_db_mi,
 			part4_xref2_col = ifelse(part4_xref2_ac!="",
 									paste(part4_xref2_ac,part4_xref2_db,part4_xref2_db_mi,sep="&"),
 									""),
@@ -1595,9 +1644,9 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part5_id,
 			part5_id_db,
 			part5_id_db_mi,
-			part5_xref_col = ifelse(part5_xref_ac!="",
-									paste(part5_xref_ac,part5_xref_db,part5_xref_db_mi,sep="&"),
-									""),
+			part5_xref_ac,
+			part5_xref_db,
+			part5_xref_db_mi,
 			part5_xref2_col = ifelse(part5_xref2_ac!="",
 									paste(part5_xref2_ac,part5_xref2_db,part5_xref2_db_mi,sep="&"),
 									""),
@@ -1629,16 +1678,35 @@ preflatfile3 <- preflatfile2[,.(psimi,
 									""),
 			part5_feat2_col = ifelse(part5_feat2_shortlabel!="",
 									paste(part5_feat2_shortlabel,part5_feat2_type,part5_feat2_type_mi,part5_feat2_range,part5_feat2_range_mi,sep="&"),
-									""))]
+									""),
+			fig_leg,
+			fig_leg_type,
+			fig_leg_type_mi,
+			comment_int1,
+			comment_int1_type,
+			comment_int1_type_mi,
+			comment_int2,
+			comment_int2_type,
+			comment_int2_type_mi,
+			comment_int3,
+			comment_int3_type,
+			comment_int3_type_mi,
+			comment_int4,
+			comment_int4_type,
+			comment_int4_type_mi,
+			Date)]
 
-preflatfile4 <- preflatfile3[,.(psimi,
+preflatfile4 <- unique(preflatfile3[,.(psimi,
 				psi_mi_mi,
 				identity,
 				identity_mi,
 				comment_publ,
 				comment_publ_type,
 				comment_publ_type_mi,
-				xrefs_exp = paste(xref_exp1_col,xref_exp2_col,xref_exp3_col,sep="|"),
+				xref_exp1,
+				xref_exp1_db,
+				xref_exp1_db_mi,
+				xrefs_exp = paste(xref_exp2_col,xref_exp3_col,sep="|"),
 				pmid,
 				pubmed_ref,
 				pubmed_ref_mi,
@@ -1649,18 +1717,19 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				host_ac,
 				int_det_met,
 				int_det_met_mi,
-				fig_leg,
-				fig_leg_type,
-				fig_leg_type_mi,
-				xrefs_int = paste(xref_int1_col,xref_int2_col,xref_int3_col,sep="|"),
-				comments_int = paste(comment_int1_col,comment_int2_col,comment_int3_col,comment_int4_col,sep="|"),
+				xref_int1_db,
+				xref_int1_db_mi,
+				xrefs_int = paste(xref_int2_col,xref_int3_col,sep="|"),
 				part1_alias,
 				part1_alias_type,
 				part1_alias_type_mi,
 				part1_id,
 				part1_id_db,
 				part1_id_db_mi,
-				part1_xrefs = paste(part1_xref_col,part1_xref2_col,part1_xref3_col,part1_scixref_col,part1_scixref2_col,sep="|"),
+				part1_xref_ac,
+				part1_xref_db,
+				part1_xref_db_mi,
+				part1_xrefs = paste(part1_xref2_col,part1_xref3_col,part1_scixref_col,part1_scixref2_col,sep="|"),
 				part1_comment1,
 				part1_comment1_type,
 				part1_comment1_type_mi,
@@ -1675,14 +1744,17 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				part1_phost_dbmi,
 				part1_phost_taxid,
 				part1_exp_preps,
-				part1_feats = paste(part1_feat1_col,part1_feat2_col,sep="|"),
+				part1_feats = paste(part1_feat1_col,paste(unique(part1_feat2_col),collapse="|"),sep="|"),
 				part2_alias,
 				part2_alias_type,
 				part2_alias_type_mi,
 				part2_id,
 				part2_id_db,
 				part2_id_db_mi,
-				part2_xrefs = paste(part2_xref_col,part2_xref2_col,part2_xref3_col,part2_scixref_col,part2_scixref2_col,sep="|"),
+				part2_xref1,
+				part2_xref1_db,
+				part2_xref1_db_mi,
+				part2_xrefs = paste(part2_xref2_col,part2_xref3_col,part2_scixref_col,part2_scixref2_col,sep="|"),
 				part2_comment1,
 				part2_comment1_type,
 				part2_comment1_type_mi,
@@ -1704,7 +1776,10 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				part3_id,
 				part3_id_db,
 				part3_id_db_mi,
-				part3_xrefs = paste(part3_xref_col,part3_xref2_col,part3_xref3_col,part3_scixref_col,part3_scixref2_col,sep="|"),
+				part3_xref_ac,
+				part3_xref_db,
+				part3_xref_db_mi,
+				part3_xrefs = paste(part3_xref2_col,part3_xref3_col,part3_scixref_col,part3_scixref2_col,sep="|"),
 				part3_comment1,
 				part3_comment1_type,
 				part3_comment1_type_mi,
@@ -1726,7 +1801,10 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				part4_id,
 				part4_id_db,
 				part4_id_db_mi,
-				part4_xrefs = paste(part4_xref_col,part4_xref2_col,part4_xref3_col,part4_scixref_col,part4_scixref2_col,sep="|"),
+				part4_xref_ac,
+				part4_xref_db,
+				part4_xref_db_mi,
+				part4_xrefs = paste(part4_xref2_col,part4_xref3_col,part4_scixref_col,part4_scixref2_col,sep="|"),
 				part4_comment1,
 				part4_comment1_type,
 				part4_comment1_type_mi,
@@ -1748,7 +1826,10 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				part5_id,
 				part5_id_db,
 				part5_id_db_mi,
-				part5_xrefs = paste(part5_xref_col,part5_xref2_col,part5_xref3_col,part5_scixref_col,part5_scixref2_col,sep="|"),
+				part5_xref_ac,
+				part5_xref_db,
+				part5_xref_db_mi,
+				part5_xrefs = paste(part5_xref2_col,part5_xref3_col,part5_scixref_col,part5_scixref2_col,sep="|"),
 				part5_comment1,
 				part5_comment1_type,
 				part5_comment1_type_mi,
@@ -1763,9 +1844,29 @@ preflatfile4 <- preflatfile3[,.(psimi,
 				part5_phost_dbmi,
 				part5_phost_taxid,
 				part5_exp_preps,
-				part5_feats = paste(part5_feat1_col,part5_feat2_col,sep="|"))]
+				part5_feats = paste(part5_feat1_col,part5_feat2_col,sep="|"),
+				fig_leg,
+			fig_leg_type,
+			fig_leg_type_mi,
+			comment_int1,
+			comment_int1_type,
+			comment_int1_type_mi,
+			comment_int2,
+			comment_int2_type,
+			comment_int2_type_mi,
+			comment_int3,
+			comment_int3_type,
+			comment_int3_type_mi,
+			comment_int4,
+			comment_int4_type,
+			comment_int4_type_mi,
+			Date),
+			by = "xref_int1"])
 
 for (col in colnames(preflatfile4)) preflatfile4[grepl("^\\|+$",get(col)), (col) := ""]
+for (col in colnames(preflatfile4)) preflatfile4[grepl("\\|\\|",get(col)), (col) := ""]
+for (col in colnames(preflatfile4)) preflatfile4[grepl("^\\|+",get(col)), (col) := ""]
+
 
 preflatfile5 <- preflatfile4[,.(psimi,
 				psi_mi_mi,
@@ -1774,6 +1875,9 @@ preflatfile5 <- preflatfile4[,.(psimi,
 				comment_publ,
 				comment_publ_type,
 				comment_publ_type_mi,
+				xref_exp1,
+				xref_exp1_db,
+				xref_exp1_db_mi,
 				xrefs_exp = gsub("^\\||\\|$","",xrefs_exp),
 				pmid,
 				pubmed_ref,
@@ -1785,31 +1889,49 @@ preflatfile5 <- preflatfile4[,.(psimi,
 				host_ac,
 				int_det_met,
 				int_det_met_mi,
-				fig_leg,
-				fig_leg_type,
-				fig_leg_type_mi,
+				xref_int1,
+				xref_int1_db,
+				xref_int1_db_mi,
 				xrefs_int = gsub("^\\||\\|$","",xrefs_int),
-				comments_int = gsub("^\\||\\|$","",comments_int),
-				part1 = paste(part1_alias,part1_alias_type,part1_alias_type_mi,part1_id,part1_id_db,part1_id_db_mi,part1_xrefs,part1_comment1,part1_comment1_type,part1_comment1_type_mi,part1_taxid,part1_type,part1_type_mi,part1_pdm,part1_pdm_mi,part1_phost_shtlbl,part1_phost_ac,part1_phost_db,part1_phost_dbmi,part1_phost_taxid,part1_exp_preps,gsub("\\|+","\\|",part1_feats),sep=","),
-				part2 = paste(part2_alias,part2_alias_type,part2_alias_type_mi,part2_id,part2_id_db,part2_id_db_mi,part2_xrefs,part2_comment1,part2_comment1_type,part2_comment1_type_mi,part2_taxid,part2_type,part2_type_mi,part2_pdm,part2_pdm_mi,part2_phost_shtlbl,part2_phost_ac,part2_phost_db,part2_phost_dbmi,part2_phost_taxid,part2_exp_preps,gsub("\\|+","\\|",part2_feats),sep=","),
+				part1 = paste(part1_alias,part1_alias_type,part1_alias_type_mi,part1_id,part1_id_db,part1_id_db_mi,part1_xref_ac,part1_xref_db,part1_xref_db_mi,gsub("^\\||\\|$","",part1_xrefs),part1_comment1,part1_comment1_type,part1_comment1_type_mi,part1_taxid,part1_type,part1_type_mi,part1_pdm,part1_pdm_mi,part1_phost_shtlbl,part1_phost_ac,part1_phost_db,part1_phost_dbmi,part1_phost_taxid,part1_exp_preps,gsub("\\|+","\\|",part1_feats),sep="£"),
+				part2 = paste(part2_alias,part2_alias_type,part2_alias_type_mi,part2_id,part2_id_db,part2_id_db_mi,part2_xref1,part2_xref1_db,part2_xref1_db_mi,gsub("^\\||\\|$","",part2_xrefs),part2_comment1,part2_comment1_type,part2_comment1_type_mi,part2_taxid,part2_type,part2_type_mi,part2_pdm,part2_pdm_mi,part2_phost_shtlbl,part2_phost_ac,part2_phost_db,part2_phost_dbmi,part2_phost_taxid,part2_exp_preps,gsub("\\|+","\\|",part2_feats),sep="£"),
 				part3 = ifelse(part3_alias!="",
-				               paste(part3_alias,part3_alias_type,part3_alias_type_mi,part3_id,part3_id_db,part3_id_db_mi,part3_xrefs,part3_comment1,part3_comment1_type,part3_comment1_type_mi,part3_taxid,part3_type,part3_type_mi,part3_pdm,part3_pdm_mi,part3_phost_shtlbl,part3_phost_ac,part3_phost_db,part3_phost_dbmi,part3_phost_taxid,part3_exp_preps,gsub("\\|+","\\|",part3_feats),sep=","),
+				               paste(part3_alias,part3_alias_type,part3_alias_type_mi,part3_id,part3_id_db,part3_id_db_mi,part3_xref_ac,part3_xref_db,part3_xref_db_mi,gsub("^\\||\\|$","",part3_xrefs),part3_comment1,part3_comment1_type,part3_comment1_type_mi,part3_taxid,part3_type,part3_type_mi,part3_pdm,part3_pdm_mi,part3_phost_shtlbl,part3_phost_ac,part3_phost_db,part3_phost_dbmi,part3_phost_taxid,part3_exp_preps,gsub("\\|+","\\|",part3_feats),sep="£"),
 				               ""),
 				part4 = ifelse(part4_alias!="",
-				               paste(part4_alias,part4_alias_type,part4_alias_type_mi,part4_id,part4_id_db,part4_id_db_mi,part4_xrefs,part4_comment1,part4_comment1_type,part4_comment1_type_mi,part4_taxid,part4_type,part4_type_mi,part4_pdm,part4_pdm_mi,part4_phost_shtlbl,part4_phost_ac,part4_phost_db,part4_phost_dbmi,part4_phost_taxid,part4_exp_preps,gsub("\\|+","\\|",part4_feats),sep=","),
+				               paste(part4_alias,part4_alias_type,part4_alias_type_mi,part4_id,part4_id_db,part4_id_db_mi,part4_xref_ac,part4_xref_db,part4_xref_db_mi,gsub("^\\||\\|$","",part4_xrefs),part4_comment1,part4_comment1_type,part4_comment1_type_mi,part4_taxid,part4_type,part4_type_mi,part4_pdm,part4_pdm_mi,part4_phost_shtlbl,part4_phost_ac,part4_phost_db,part4_phost_dbmi,part4_phost_taxid,part4_exp_preps,gsub("\\|+","\\|",part4_feats),sep="£"),
 				               ""),
 				part5 = ifelse(part5_alias!="",
-				               paste(part5_alias,part5_alias_type,part5_alias_type_mi,part5_id,part5_id_db,part5_id_db_mi,part5_xrefs,part5_comment1,part5_comment1_type,part5_comment1_type_mi,part5_taxid,part5_type,part5_type_mi,part5_pdm,part5_pdm_mi,part5_phost_shtlbl,part5_phost_ac,part5_phost_db,part5_phost_dbmi,part5_phost_taxid,part5_exp_preps,gsub("\\|+","\\|",part5_feats),sep=","),
-				               ""))]
+				               paste(part5_alias,part5_alias_type,part5_alias_type_mi,part5_id,part5_id_db,part5_id_db_mi,part5_xref_ac,part5_xref_db,part5_xref_db_mi,gsub("^\\||\\|$","",part5_xrefs),part5_comment1,part5_comment1_type,part5_comment1_type_mi,part5_taxid,part5_type,part5_type_mi,part5_pdm,part5_pdm_mi,part5_phost_shtlbl,part5_phost_ac,part5_phost_db,part5_phost_dbmi,part5_phost_taxid,part5_exp_preps,gsub("\\|+","\\|",part5_feats),sep="£"),
+				               ""),
+			fig_leg,
+			fig_leg_type,
+			fig_leg_type_mi,
+			comment_int1,
+			comment_int1_type,
+			comment_int1_type_mi,
+			comment_int2,
+			comment_int2_type,
+			comment_int2_type_mi,
+			comment_int3,
+			comment_int3_type,
+			comment_int3_type_mi,
+			comment_int4,
+			comment_int4_type,
+			comment_int4_type_mi,
+			Date)]
 
 
-flatfile <- preflatfile5[,.(psimi,
+flatfile <- unique(preflatfile5[,.(psimi,
 			psi_mi_mi,
 			identity,
 			identity_mi,
 			comment_publ,
 			comment_publ_type,
 			comment_publ_type_mi,
+			xref_exp1,
+			xref_exp1_db,
+			xref_exp1_db_mi,
 			xrefs_exp,
 			pmid,
 			pubmed_ref,
@@ -1821,12 +1943,43 @@ flatfile <- preflatfile5[,.(psimi,
 			host_ac,
 			int_det_met,
 			int_det_met_mi,
+			xref_int1,
+			xref_int1_db,
+			xref_int1_db_mi,
+			xrefs_int,
+			parts = paste(gsub("\\|+","\\|",part1),gsub("\\|+","\\|",part2),gsub("\\|+","\\|",part3),gsub("\\|+","\\|",part4),gsub("\\|+","\\|",part5),sep=";"),
 			fig_leg,
 			fig_leg_type,
 			fig_leg_type_mi,
-			xrefs_int,
-			comments_int,
-			parts = paste(gsub("\\|+","\\|",part1),gsub("\\|+","\\|",part2),gsub("\\|+","\\|",part3),gsub("\\|+","\\|",part4),gsub("\\|+","\\|",part5),sep=";"))]
+			comment_int1,
+			comment_int1_type,
+			comment_int1_type_mi,
+			comment_int2,
+			comment_int2_type,
+			comment_int2_type_mi,
+			comment_int3,
+			comment_int3_type,
+			comment_int3_type_mi,
+			comment_int4,
+			comment_int4_type,
+			comment_int4_type_mi,
+			comment_int4_db = "intact",
+			comment_int4_db_mi = "MI:0469",
+			Date,
+			int.type = ifelse(
+			        part3 == "" &
+			                grepl("purified",part1) &
+			                grepl("purified",part2),
+			        "direct interaction", 
+			        "physical association" 
+			),
+			int.type.mi = ifelse(
+			        part3 == "" &
+			                grepl("purified",part1) &
+			                grepl("purified",part2),
+			        "MI:0407",
+			        "MI:0915"
+			))])
 
 fwrite(flatfile,"./xml_import/scicura_map.txt",col.names = T,row.names = F,sep="\t",quote = F)
 ```
@@ -1838,4 +1991,32 @@ fwrite(flatfile,"./xml_import/scicura_map.txt",col.names = T,row.names = F,sep="
    3. Some interaction detection (experimental detection in SciCura) methods have no participant detection method specified. 
    4. Records with non-mapped cell lines have not been included.
    5. Records with unidentified TGs have also been ignored. 
+   6. Interaction types are missing. Thewy have been set using a rather simplistic algorithm and might need revising. At the moment, all interaction types are set to physical association.
+   7. NTNU MI term might need replacement with a new SciCura term later on, not for the moment. 
    
+### Check for interaction type
+```{r int.type.check}
+int.type.check <- unique(flatfile[,.(
+        purif.parts <- ifelse(
+                grepl("purified",parts),
+                "yes",
+                "no"
+        ),
+        int_det_met,
+        int_det_met_mi,
+        int.type,
+        int.type.mi
+)])
+```
+
+### Publications list for easy checks
+```{r publ.list}
+pmids <- unique(flatfile[,.(pmid)])
+```
+
+### Import issues
+
+    1. Interaction host is not imported
+    2. Participant host is not imported
+    3. Participant detection methods are not imported. PDM at interaction level might need to be pre-defined. 
+    

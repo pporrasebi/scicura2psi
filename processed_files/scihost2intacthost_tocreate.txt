@@ -1,5 +1,4 @@
 IntAct.mitab	Scicura.MITAB	scicura_host	AC	TAXID
-human-bpxc3	taxid:9606(BxPC-3 cell)	BxPC-3 cell		
 human-embryo	taxid:9606(embryo)	embryo		
 human-hmv_ii	taxid:9606(HMV-II cell)	HMV-II cell		
 human-mel501	taxid:9606(Mel501 cell)	Mel501 cell		
