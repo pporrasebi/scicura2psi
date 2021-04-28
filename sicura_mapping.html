@@ -3626,7 +3626,9 @@ flatfile &lt;- unique(preflatfile5[,.(psimi,
                             grepl(&quot;purified&quot;,part2),
                     &quot;MI:0407&quot;,
                     &quot;MI:0915&quot;
-            ))])
+            ),
+            pdm = &quot;experimental particp&quot;,
+            pdm.mi = &quot;MI:0661&quot;)])
 
 fwrite(flatfile,&quot;./xml_import/scicura_map.txt&quot;,col.names = T,row.names = F,sep=&quot;\t&quot;,quote = F)</code></pre>
 </div>
@@ -3634,12 +3636,12 @@ fwrite(flatfile,&quot;./xml_import/scicura_map.txt&quot;,col.names = T,row.names
 <h2>Pending issues</h2>
 <ol style="list-style-type: decimal">
 <li>Participant experimental and biological roles are set to unspecified. Experimental role at least can probably be provided.</li>
-<li>Participant detection method is associated to each participant exclusively, but not provided at experiment level. This may cause problems. If it does, I will just assign it based on the first TF participant detection method.</li>
-<li>Some interaction detection (experimental detection in SciCura) methods have no participant detection method specified.</li>
+<li>Participant detection method is associated to each participant exclusively, but not provided at experiment level. I have set the experiment level to the generic ‘experimental detection’ and the specifics will be given at the participant level.</li>
+<li>Some interaction detection methods (experimental detection in SciCura) have no participant detection method specified. These have been set to unspecified, but it would be great to have them.</li>
 <li>Records with non-mapped cell lines have not been included.</li>
 <li>Records with unidentified TGs have also been ignored.</li>
-<li>Interaction types are missing. Thewy have been set using a rather simplistic algorithm and might need revising. At the moment, all interaction types are set to physical association.</li>
-<li>NTNU MI term might need replacement with a new SciCura term later on, not for the moment.</li>
+<li>Interaction types are missing. They have been set using a rather simplistic algorithm and might need revising. At the moment, all interaction types are set to physical association.</li>
+<li>NTNU MI term will be updated. The term might need replacement with a new SciCura term later on (because of xrefs), but not for the moment.</li>
 </ol>
 <div id="check-for-interaction-type" class="section level3">
 <h3>Check for interaction type</h3>
@@ -3654,6 +3656,29 @@ fwrite(flatfile,&quot;./xml_import/scicura_map.txt&quot;,col.names = T,row.names
         int.type,
         int.type.mi
 )])</code></pre>
+</div>
+<div id="publications-list-for-easy-checks" class="section level3">
+<h3>Publications list for easy checks</h3>
+<pre class="r"><code>pmids &lt;- unique(flatfile[,.(pmid)])</code></pre>
+</div>
+<div id="test-file" class="section level3">
+<h3>Test file</h3>
+<pre class="r"><code>set.seed(88)
+test.flatfile &lt;- flatfile[sample(1:nrow(flatfile),1)]
+fwrite(
+        test.flatfile,
+        &quot;./xml_import/test.flatfile.txt&quot;,
+        col.names = T,
+        row.names = F,
+        sep = &quot;\t&quot;,
+        quote = F
+)</code></pre>
+</div>
+<div id="import-issues" class="section level3">
+<h3>Import issues</h3>
+<pre><code>1. Interaction host is not imported
+2. Participant host is not imported
+3. Participant detection methods are not imported. PDM at interaction level might need to be pre-defined. </code></pre>
 </div>
 </div>
 

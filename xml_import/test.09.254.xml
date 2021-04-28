@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- created using XmlMakerFlattener v2 (http://code.google.com/p/xmlmakerflattener/) -->
+<entrySet level="2" version="5" minorVersion="4" xsi:schemaLocation="http://psi.hupo.org/mi/mif https://raw.githubusercontent.com/HUPO-PSI/miXML/master/2.5/src/MIF254.xsd" xmlns="http://psi.hupo.org/mi/mif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<entry>
+		<source>
+			<names>
+				<shortLabel>IntAct</shortLabel>
+				<fullName>European Bioinformatics Institute</fullName>
+			</names>
+			<xref>
+				<primaryRef db="pubmed" dbAc="MI:0446" id="14681455" refType="primary-reference" refTypeAc="MI:0358"/>
+				<secondaryRef db="psi-mi" dbAc="MI:0488" id="MI:0469" refType="identity" refTypeAc="MI:0356"/>
+			</xref>
+			<attributeList>
+				<attribute name="url" nameAc="MI:0614">http://www.ebi.ac.uk/</attribute>
+			</attributeList>
+		</source>
+		<interactionList>
+			<interaction id="23">
+				<xref>
+					<primaryRef db="ntnu" dbAc="MI:1264" id="196754" refType="identity" refTypeAc="MI:0356"/>
+					<secondaryRef db="ntnu" dbAc="MI:1264" id="201105" refType="identity" refTypeAc="MI:0356"/>
+					<secondaryRef db="brenda" dbAc="MI:0864" id="BTO:0002392" refType="identity" refTypeAc="MI:0356"/>
+				</xref>
+				<experimentList>
+					<experimentDescription id="2">
+						<bibref>
+							<xref>
+								<primaryRef db="pubmed" dbAc="MI:0446" id="20440264" refType="primary-reference" refTypeAc="MI:0358"/>
+							</xref>
+						</bibref>
+						<hostOrganismList>
+							<hostOrganism ncbiTaxId="9606">
+								<cellType>
+									<names>
+										<shortLabel>human-sgc7901</shortLabel>
+									</names>
+									<xref>
+										<primaryRef db="psi-mi" dbAc="MI:0488" id="EBI-10690648" refType="identity" refTypeAc="MI:0356"/>
+									</xref>
+								</cellType>
+							</hostOrganism>
+						</hostOrganismList>
+						<interactionDetectionMethod>
+							<names>
+								<shortLabel>primer specific pcr</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0088" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+						</interactionDetectionMethod>
+						<participantIdentificationMethod>
+							<names>
+								<shortLabel>experimental particp</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0661" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+						</participantIdentificationMethod>
+						<attributeList>
+							<attribute name="comment" nameAc="MI:0612">Marcio Luis Acencio</attribute>
+						</attributeList>
+					</experimentDescription>
+				</experimentList>
+				<participantList>
+					<participant id="11">
+						<names>
+							<alias typeAc="MI:0301" type="gene name">IRX1</alias>
+						</names>
+						<interactor id="5">
+							<names>
+								<shortLabel>P78414</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="UniProtKB" dbAc="MI:0486" id="P78414" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+							<interactorType>
+								<names>
+									<shortLabel>protein</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0326" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</interactorType>
+							<organism ncbiTaxId="9606"/>
+						</interactor>
+						<participantIdentificationMethodList>
+							<participantIdentificationMethod>
+								<names>
+									<shortLabel>unspecified method</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0686" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</participantIdentificationMethod>
+						</participantIdentificationMethodList>
+						<biologicalRole>
+							<names>
+								<shortLabel>unspecified role</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0499" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+						</biologicalRole>
+						<experimentalRoleList>
+							<experimentalRole>
+								<names>
+									<shortLabel>unspecified role</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0499" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</experimentalRole>
+						</experimentalRoleList>
+						<experimentalPreparationList>
+							<experimentalPreparation>
+								<names>
+									<shortLabel>over-expressed</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0506" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</experimentalPreparation>
+							<experimentalPreparation>
+								<names>
+									<shortLabel>engineered</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0331" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</experimentalPreparation>
+						</experimentalPreparationList>
+					</participant>
+					<participant id="20">
+						<names>
+							<alias typeAc="MI:0301" type="gene name">DKK3</alias>
+						</names>
+						<xref>
+							<primaryRef db="entrezgene/locuslink" dbAc="MI:0477" id="27122" refType="identity" refTypeAc="MI:0356"/>
+						</xref>
+						<interactor id="14">
+							<names>
+								<shortLabel>ENSG00000050165</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="ensembl" dbAc="MI:0476" id="ENSG00000050165" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+							<interactorType>
+								<names>
+									<shortLabel>gene</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0250" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</interactorType>
+							<organism ncbiTaxId="9606"/>
+						</interactor>
+						<participantIdentificationMethodList>
+							<participantIdentificationMethod>
+								<names>
+									<shortLabel>unspecified method</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0686" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</participantIdentificationMethod>
+						</participantIdentificationMethodList>
+						<biologicalRole>
+							<names>
+								<shortLabel>unspecified role</shortLabel>
+							</names>
+							<xref>
+								<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0499" refType="identity" refTypeAc="MI:0356"/>
+							</xref>
+						</biologicalRole>
+						<experimentalRoleList>
+							<experimentalRole>
+								<names>
+									<shortLabel>unspecified role</shortLabel>
+								</names>
+								<xref>
+									<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0499" refType="identity" refTypeAc="MI:0356"/>
+								</xref>
+							</experimentalRole>
+						</experimentalRoleList>
+					</participant>
+				</participantList>
+				<interactionType>
+					<names>
+						<shortLabel>physical association</shortLabel>
+					</names>
+					<xref>
+						<primaryRef db="psi-mi" dbAc="MI:0488" id="MI:0915" refType="identity"/>
+					</xref>
+				</interactionType>
+				<attributeList>
+					<attribute name="figure legend" nameAc="MI:0599">Fig 6B</attribute>
+					<attribute name="comment" nameAc="MI:0612">2</attribute>
+					<attribute name="comment" nameAc="MI:0612">2017-05-18T00:00:00Z</attribute>
+					<attribute name="comment" nameAc="MI:0612">Marcio Luis Acencio</attribute>
+					<attribute name="remark-internal" nameAc="IA:0245">MLA:OK</attribute>
+					<attribute name="remark-internal" nameAc="IA:0245">2017-05-18T00:00:00Z</attribute>
+				</attributeList>
+			</interaction>
+		</interactionList>
+		<attributeList>
+			<attribute name="full coverage" nameAc="MI:0957"/>
+			<attribute name="imex-curation" nameAc="MI:0959"/>
+		</attributeList>
+	</entry>
+</entrySet>

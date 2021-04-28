@@ -1,0 +1,24 @@
+85c85
+< EBI-704722	rat-heart	10116	EBI-307635
+---
+> EBI-704722	rat-heart	10116	
+99c99
+< EBI-761884	mouse-embryonic_fibroblast	10090	EBI-761879
+---
+> EBI-761884	mouse-embryonic_fibroblast	10090	
+143c143
+< EBI-307793	human-lymphoblast	9606	EBI-307792
+---
+> EBI-307793	human-lymphoblast	9606	
+248c248
+< EBI-492979	rat-brain	10116	EBI-307618
+---
+> EBI-492979	rat-brain	10116	
+887c887
+< EBI-904338	mouse-embryonic_stem cell	10090	EBI-904337
+---
+> EBI-904338	mouse-embryonic_stem cell	10090	
+2144c2144
+< EBI-6922694	human-bronchial_epithelial	9606	EBI-6921933
+---
+> EBI-6922694	human-bronchial_epithelial	9606	

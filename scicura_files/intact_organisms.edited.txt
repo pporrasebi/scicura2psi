@@ -82,7 +82,7 @@ EBI-701859	human-hn5	9606	EBI-701856
 EBI-703564	rat-spinal-cord	10116	
 EBI-704335	human-m1	9606	EBI-704331
 EBI-704338	human-mnt-1	9606	EBI-704333
-EBI-704722	rat-heart	10116	
+EBI-704722	rat-heart	10116	EBI-307635
 EBI-706321	hcvj6	11113	
 EBI-706377	hcvh	11108	
 EBI-302123	pladu	6359	
@@ -96,7 +96,7 @@ EBI-727503	human-colon	9606
 EBI-727882	human-hct116	9606	EBI-727881
 EBI-738870	human-karpas_299	9606	EBI-738868
 EBI-761201	maize	4577	
-EBI-761884	mouse-embryonic_fibroblast	10090	
+EBI-761884	mouse-embryonic_fibroblast	10090	EBI-761879
 EBI-848026	bovin-brain	9913	
 EBI-762110	human-salivary_gland	9606	
 EBI-762443	cossp	49577	
@@ -140,7 +140,7 @@ EBI-307753	human-neutrophil	9606
 EBI-307760	drome-schneider_2	7227	EBI-307758
 EBI-307784	mouse-l cells	10090	EBI-307782
 EBI-307789	human-ccrf_cem	9606	EBI-307787
-EBI-307793	human-lymphoblast	9606	
+EBI-307793	human-lymphoblast	9606	EBI-307792
 EBI-307798	mouse-skeletal-muscle	10090	
 EBI-307825	human-cs	9606	EBI-307823
 EBI-307865	human-sh_sy5y	9606	EBI-307863
@@ -245,7 +245,7 @@ EBI-491680	xenla-oocyte	8355
 EBI-492009	mouse-neuron	10090	
 EBI-492420	human-u2-os	9606	EBI-492418
 EBI-492793	mouse-l-929	10090	EBI-492791
-EBI-492979	rat-brain	10116	
+EBI-492979	rat-brain	10116	EBI-307618
 EBI-493876	mouse-p388d1	10090	EBI-493872
 EBI-494186	mouse-erythroleukemia	10090	
 EBI-495090	human-t-cell	9606	
@@ -884,7 +884,7 @@ EBI-878343	mouse-c2c12	10090	EBI-878341
 EBI-9074010	human-snu-449	9606	EBI-9031212
 EBI-9074540	human-ren	9606	EBI-9074537
 EBI-904199	mouse-embryo	10090	
-EBI-904338	mouse-embryonic_stem cell	10090	
+EBI-904338	mouse-embryonic_stem cell	10090	EBI-904337
 EBI-904469	mouse-70z_3	10090	EBI-904467
 EBI-904968	human-thp-1	9606	EBI-904966
 EBI-906048	horvd	112509	
@@ -2141,7 +2141,7 @@ EBI-6922684	chick-brain	9031
 EBI-6922686	chick-cgnp	9031	
 EBI-6922688	chick-retina	9031	
 EBI-6922690	macfa-kidney	9541	
-EBI-6922694	human-bronchial_epithelial	9606	
+EBI-6922694	human-bronchial_epithelial	9606	EBI-6921933
 EBI-6922696	human-embryonic neur	9606	
 EBI-6922698	human-hbmec	9606	
 EBI-6922700	human-lymphocyte	9606	

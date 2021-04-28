@@ -1,22 +1,21 @@
-IntAct.mitab	Scicura.MITAB	scicura_host	AC	TAXID
-human-embryo	taxid:9606(embryo)	embryo		
-human-hmv_ii	taxid:9606(HMV-II cell)	HMV-II cell		
-human-mel501	taxid:9606(Mel501 cell)	Mel501 cell		
-human-mia_pa_ca2	taxid:9606(MiaPaCa-2 cell)	MiaPaCa-2 cell		
-human-mkn28	taxid:9606(MKN-28 cell)	MKN-28 cell		
-human-mono_ma6	taxid:9606(Mono-Mac-6 cell)	Mono-Mac-6 cell		
-human-nhk	taxid:9606(NHK cell)	NHK cell		
-human-pancreatic islet	taxid:9606(pancreatic islet)	pancreatic islet		
-human-rs4_11	taxid:9606(RS4-11 cell)	RS4-11 cell		
-human-sw1990	taxid:9606(SW-1990 cell)	SW-1990 cell		
-human-tongue	taxid:9606(tongue)	tongue		
-mouse-416b	taxid:10090(416B cell)	416B cell		
-mouse-hepa1_1c1	taxid:10090(Hepa-1c1c7 cell)	Hepa-1c1c7 cell		
-mouse-lbeta_t2	taxid:10090(LbetaT2 cell)	LbetaT2 cell		
-mouse-op9	taxid:10090(OP-9 cell)	OP-9 cell		
-mouse-pam212	taxid:10090(PAM212 cell)	PAM212 cell		
-rat-keratinocyte	taxid:10116(keratinocyte)	keratinocyte		
-rat-olfactory bulb	taxid:10116(olfactory bulb)	olfactory bulb		
-rat-ovary	taxid:10116(ovary)	ovary		
-rat-smooth muscle	taxid:10116(smooth muscle cell)	smooth muscle cell		
-rat-t-cell	taxid:10116(T-lymphocyte)	T-lymphocyte		
+IntAct.mitab	Scicura.MITAB	scicura_host	AC	TAXID	CELLTYPE_AC	TISSUE_AC
+human-embryo	taxid:9606(embryo)	embryo				
+human-hmv_ii	taxid:9606(HMV-II cell)	HMV-II cell				
+human-mel501	taxid:9606(Mel501 cell)	Mel501 cell				
+human-mia_pa_ca2	taxid:9606(MiaPaCa-2 cell)	MiaPaCa-2 cell				
+human-mono_ma6	taxid:9606(Mono-Mac-6 cell)	Mono-Mac-6 cell				
+human-nhk	taxid:9606(NHK cell)	NHK cell				
+human-pancreatic islet	taxid:9606(pancreatic islet)	pancreatic islet				
+human-rs4_11	taxid:9606(RS4-11 cell)	RS4-11 cell				
+human-sw1990	taxid:9606(SW-1990 cell)	SW-1990 cell				
+human-tongue	taxid:9606(tongue)	tongue				
+mouse-416b	taxid:10090(416B cell)	416B cell				
+mouse-hepa1_1c1	taxid:10090(Hepa-1c1c7 cell)	Hepa-1c1c7 cell				
+mouse-lbeta_t2	taxid:10090(LbetaT2 cell)	LbetaT2 cell				
+mouse-op9	taxid:10090(OP-9 cell)	OP-9 cell				
+mouse-pam212	taxid:10090(PAM212 cell)	PAM212 cell				
+rat-keratinocyte	taxid:10116(keratinocyte)	keratinocyte				
+rat-olfactory bulb	taxid:10116(olfactory bulb)	olfactory bulb				
+rat-ovary	taxid:10116(ovary)	ovary				
+rat-smooth muscle	taxid:10116(smooth muscle cell)	smooth muscle cell				
+rat-t-cell	taxid:10116(T-lymphocyte)	T-lymphocyte				

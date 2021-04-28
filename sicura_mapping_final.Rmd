@@ -36,7 +36,7 @@ scicura_db <- data.table(read_excel("./scicura_files/scicura_annotation.xlsx",
 
 ## Mapping
 
-I go field by field checking what can be mapped from the Scicura format to MITAB. Rules have been defined by Astrid, Sandra and me during the last few months and are improted from appropriate files as needed.
+I go field by field checking what can be mapped from the Scicura format to MITAB. Rules have been defined by Astrid, Sandra and me and are imported from appropriate files as needed.
 
 ##### 0: preformatting
 Only entries with valid identifiers for the TG/TF fields are considered. I also reformat scicura IDs so they do not have the extra '1000' at the beginning of the value. 
@@ -144,12 +144,6 @@ map_sci_1.1[exp_met_name == "primer specific pcr"]$exp_met_name <- "ch-ip"
 map_sci_1.1[exp_met_mi == "MI:0088"]$exp_met_mi <- "MI:0402"
 ```
 
-# SIGUE AQUÍ: 
-
-PDMs arenext
-
-wait for astrid's confirmation of chip replacement (see latest step on code block above)
-
 ##### 2: Add participant detection methods
 This is taken from the mapping sheet 'Int. methods vs part. methods ' in the 'rules_ppm.xlsx'. 
 ```{r add_part_det_met}
@@ -206,9 +200,8 @@ scihost2intacthost <- data.table(read_excel("./scicura_files/rules_ppm.xlsx",
 #                          colClasses = "character",
 #                          stringsAsFactors = F,
 #                          sep = "\t")
-
-# NOTE: I manually edit the file obtained from the database to add a few missing accessions (blanks in scihost2intacthost_tocreate$CELLTYPE_AC)
-intact_host_mis <- fread("./scicura_files/intact_organisms.edited.txt",
+# 
+intact_host_mis <- fread("./scicura_files/intact_organisms_full.txt",
                          header=T,
                          colClasses = "character",
                          stringsAsFactors = F,
@@ -234,8 +227,8 @@ fwrite(scihost2intacthost_tocreate,
        quote = F)
 
 scihost2intacthost_simple <- scihost2intacthost_info[!is.na(AC),.(scicura_host,
-                                                   intact_host = gsub("human-|mouse-|rat-","",IntAct.mitab),
-                                                   intact_host_ac = CELLTYPE_AC,
+                                                   intact_tissue_ac = TISSUE_AC,
+                                                   intact_ct_ac = CELLTYPE_AC,
                                                    intact_host_taxid = TAXID)]
 
 # Mapping
@@ -259,17 +252,17 @@ map_sci_4 <- unique(merge(map_sci_3,
 map_sci_4 <- map_sci_4[,host_check := ifelse(host=="-1" & intact_host_taxid == "-1" | 
                                                      host=="-1" & is.na(intact_host_taxid),
                                              "ok, take host",
-                                             ifelse(host=="" & !is.na(intact_host),
+                                             ifelse(host=="" & (!is.na(intact_tissue_ac)|!is.na(intact_ct_ac)),
                                                     "ok, take intact_host",
-                                                    ifelse(host=="" & is.na(intact_host),
+                                                    ifelse(host=="" & (is.na(intact_tissue_ac) & is.na(intact_ct_ac)),
                                                            "non-mappable",
-                                                           ifelse(host=="-1" & !is.na(intact_host),
+                                                           ifelse(host=="-1" & (!is.na(intact_tissue_ac)|!is.na(intact_ct_ac)),
                                                                   "conflict, take intact_host",
                                                                   "check"))))]
 
 table(map_sci_4$host_check,useNA = "ifany")
 ```
-There are 149 non-mappable cases in this first iteration, plus 26 cases where Scicura curators specified a cell line but the specific interaction detection method used suggests the experiment may have been performed in vitro. The non-mappable cases will not be included in this first import test and in the ones with conflict we will take the cell line as host organism. 
+There are 85 non-mappable cases, plus 23 cases where Scicura curators specified a cell line but the specific interaction detection method used suggests the experiment may have been performed *in vitro*. The non-mappable cases will not be included in this import test and in the ones with conflict we will take the cell line as host organism. 
 
 ```{r host_checker}
 map_sci_4 <- data.table(mutate(map_sci_4, 
@@ -280,19 +273,19 @@ map_sci_4 <- data.table(mutate(map_sci_4,
                                                              host_check == "conflict, take intact_host",
                                                      intact_host_taxid,
                                                      NA)),
-                               host_shtlbl = 
+                               tissue_ac = 
                                        ifelse(host_check == "ok, take host",
                                               "",
                                               ifelse(host_check == "ok, take intact_host" |
                                                              host_check == "conflict, take intact_host",
-                                                     intact_host,
+                                                     intact_tissue_ac,
                                                      NA)),
-                               host_ac = 
+                               ct_ac = 
                                        ifelse(host_check == "ok, take host",
                                               "",
                                               ifelse(host_check == "ok, take intact_host" |
                                                              host_check == "conflict, take intact_host",
-                                                     intact_host_ac,
+                                                     intact_ct_ac,
                                                      NA))))
 table(map_sci_4$host_check,useNA = "ifany")
 ```
@@ -562,6 +555,7 @@ tg_repr2so <- data.table(read_excel("./scicura_files/TG_dictionary_SO_150917.xls
                                  col_types = "text"),
                                  stringsAsFactors=F,
                           check.names = T)
+
 tg_repr2so_simple <- tg_repr2so[,.(termID,
                                    so_type_xref = gsub(".*\\(","",gsub("\\)","",SO.type)),
                                    so_type_db = ifelse(SO.type!="",
@@ -592,7 +586,6 @@ tg_nonrepr <- unique(map_sci_15[is.na(so_type_xref),.(TG.Repr.SC.ID,
 It seems there are some TG representation values that are not mappable to the SO, as listed in this table: `r tg_nonrepr`
 
 
-
 ##### 8: Mapping Entrez IDs to ENSEMBL
 
 TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMBL for import. I do that using BridgeDBR. There is a mix of human, mouse and rat identifiers in the TG participants, but the species is not provided, so I will need to run the mapping several times. 
@@ -610,7 +603,7 @@ TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMB
 # }
 # 
 # tg_entrez_map <- data.table(mutate(tg_entrez_map,
-#                                    tg_taxid = 
+#                                    tg_taxid =
 #                                            ifelse(TG_ensembl=="",
 #                                                   "10090",
 #                                                   "9606")))
@@ -623,7 +616,7 @@ TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMB
 # }
 # 
 # tg_entrez_map <- data.table(mutate(tg_entrez_map,
-#                                    tg_taxid = 
+#                                    tg_taxid =
 #                                            ifelse(TG_ensembl=="",
 #                                                   "10116",
 #                                                   tg_taxid)))
@@ -638,7 +631,7 @@ TGs are currently mapped to NCBI Entrez, but they need to be re-mapped to ENSEMB
 # 
 # # Entries not mapped are checked in Entrez and the correct species is given
 # tg_entrez_map <- data.table(mutate(tg_entrez_map,
-#                                    tg_taxid = 
+#                                    tg_taxid =
 #                                            ifelse(TG.ID=="111519",
 #                                                   "10090",
 #                                                   ifelse(TG.ID=="3492",
@@ -770,8 +763,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			primary_ref = "primary-reference",
 			primary_ref_mi = "MI:0358",
 			host_taxid = host_taxid,
-			host_shtlbl = host_shtlbl,
-			host_ac = host_ac,
+			tissue_ac = tissue_ac,
+			ct_ac = ct_ac,
 			int_det_met = Exp.Method,
 			int_det_met_mi = exp_met_mi,
 			fig_leg = Pub.Elem,
@@ -831,8 +824,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			part1_type_mi = pA1_type_mi,
 			part1_pdm = partdetmet_A,
 			part1_pdm_mi = partdetmet_mi_A,
-			part1_phost_shtlbl = phost_shtlbl_tf1,
-			part1_phost_ac = phost_ac_tf1,
+			part1_tissue_ac = phost_shtlbl_tf1,
+			part1_ct_ac = phost_ac_tf1,
 			part1_phost_db = ifelse(phost_shtlbl_tf1!="",
 			                        "intact",
 			                        ""),
@@ -893,8 +886,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			part2_type_mi = pB_type_mi,
 			part2_pdm = partdetmet_B,
 			part2_pdm_mi = partdetmet_mi_B,
-			part2_phost_shtlbl = "",
-			part2_phost_ac = "",
+			part2_tissue_ac = "",
+			part2_ct_ac = "",
 			part2_phost_db = "",
 			part2_phost_dbmi = "",
 			part2_phost_taxid = "",
@@ -967,8 +960,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			part3_pdm_mi = ifelse(pA2_type_mi!="",
 			                   partdetmet_mi_A,
 			                   ""),
-			part3_phost_shtlbl = phost_shtlbl_tf2,
-			part3_phost_ac = phost_ac_tf2,
+			part3_tissue_ac = phost_shtlbl_tf2,
+			part3_ct_ac = phost_ac_tf2,
 			part3_phost_db = ifelse(phost_shtlbl_tf2!="",
 			                        "intact",
 			                        ""),
@@ -1051,8 +1044,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			part4_pdm_mi = ifelse(pA2_type_mi!="",
 			                   partdetmet_mi_A,
 			                   ""),
-			part4_phost_shtlbl = phost_shtlbl_tf3,
-			part4_phost_ac = phost_ac_tf3,
+			part4_tissue_ac = phost_shtlbl_tf3,
+			part4_ct_ac = phost_ac_tf3,
 			part4_phost_db = ifelse(phost_shtlbl_tf3!="",
 			                        "intact",
 			                        ""),
@@ -1135,8 +1128,8 @@ preflatfile1 <- map_sci_20[,.(psimi = "psi-mi",
 			part5_pdm_mi = ifelse(pA2_type_mi!="",
 			                   partdetmet_mi_A,
 			                   ""),
-			part5_phost_shtlbl = phost_shtlbl_tf4,
-			part5_phost_ac = phost_ac_tf4,
+			part5_tissue_ac = phost_shtlbl_tf4,
+			part5_ct_ac = phost_ac_tf4,
 			part5_phost_db = ifelse(phost_shtlbl_tf4!="",
 			                        "intact",
 			                        ""),
@@ -1195,8 +1188,8 @@ preflatfile2 <- unique(preflatfile1[,
 		primary_ref,
 		primary_ref_mi,
 		host_taxid,
-		host_shtlbl,
-		host_ac,
+		tissue_ac,
+		ct_ac,
 		int_det_met,
 		int_det_met_mi,
 		fig_leg,
@@ -1252,8 +1245,8 @@ preflatfile2 <- unique(preflatfile1[,
 		part1_type_mi,
 		part1_pdm,
 		part1_pdm_mi,
-		part1_phost_shtlbl,
-		part1_phost_ac,
+		part1_tissue_ac,
+		part1_ct_ac,
 		part1_phost_db,
 		part1_phost_dbmi,
 		part1_phost_taxid,
@@ -1299,8 +1292,8 @@ preflatfile2 <- unique(preflatfile1[,
 		part2_type_mi,
 		part2_pdm,
 		part2_pdm_mi,
-		part2_phost_shtlbl,
-		part2_phost_ac,
+		part2_tissue_ac,
+		part2_ct_ac,
 		part2_phost_db,
 		part2_phost_dbmi,
 		part2_phost_taxid,
@@ -1346,8 +1339,8 @@ preflatfile2 <- unique(preflatfile1[,
 		part3_type_mi,
 		part3_pdm,
 		part3_pdm_mi,
-		part3_phost_shtlbl,
-		part3_phost_ac,
+		part3_tissue_ac,
+		part3_ct_ac,
 		part3_phost_db,
 		part3_phost_dbmi,
 		part3_phost_taxid,
@@ -1393,8 +1386,8 @@ preflatfile2 <- unique(preflatfile1[,
 		part4_type_mi,
 		part4_pdm,
 		part4_pdm_mi,
-		part4_phost_shtlbl,
-		part4_phost_ac,
+		part4_tissue_ac,
+		part4_ct_ac,
 		part4_phost_db,
 		part4_phost_dbmi,
 		part4_phost_taxid,
@@ -1440,8 +1433,8 @@ preflatfile2 <- unique(preflatfile1[,
 		part5_type_mi,
 		part5_pdm,
 		part5_pdm_mi,
-		part5_phost_shtlbl,
-		part5_phost_ac,
+		part5_tissue_ac,
+		part5_ct_ac,
 		part5_phost_db,
 		part5_phost_dbmi,
 		part5_phost_taxid,
@@ -1495,8 +1488,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			primary_ref,
 			primary_ref_mi,
 			host_taxid,
-			host_shtlbl,
-			host_ac,
+			tissue_ac,
+			ct_ac,
 			int_det_met,
 			int_det_met_mi,
 			xref_int1,
@@ -1537,8 +1530,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part1_type_mi,
 			part1_pdm,
 			part1_pdm_mi,
-			part1_phost_shtlbl,
-			part1_phost_ac,
+			part1_tissue_ac,
+			part1_ct_ac,
 			part1_phost_db,
 			part1_phost_dbmi,
 			part1_phost_taxid,
@@ -1578,8 +1571,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part2_type_mi,
 			part2_pdm,
 			part2_pdm_mi,
-			part2_phost_shtlbl,
-			part2_phost_ac,
+			part2_tissue_ac,
+			part2_ct_ac,
 			part2_phost_db,
 			part2_phost_dbmi,
 			part2_phost_taxid,
@@ -1619,8 +1612,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part3_type_mi,
 			part3_pdm,
 			part3_pdm_mi,
-			part3_phost_shtlbl,
-			part3_phost_ac,
+			part3_tissue_ac,
+			part3_ct_ac,
 			part3_phost_db,
 			part3_phost_dbmi,
 			part3_phost_taxid,
@@ -1660,8 +1653,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part4_type_mi,
 			part4_pdm,
 			part4_pdm_mi,
-			part4_phost_shtlbl,
-			part4_phost_ac,
+			part4_tissue_ac,
+			part4_ct_ac,
 			part4_phost_db,
 			part4_phost_dbmi,
 			part4_phost_taxid,
@@ -1701,8 +1694,8 @@ preflatfile3 <- preflatfile2[,.(psimi,
 			part5_type_mi,
 			part5_pdm,
 			part5_pdm_mi,
-			part5_phost_shtlbl,
-			part5_phost_ac,
+			part5_tissue_ac,
+			part5_ct_ac,
 			part5_phost_db,
 			part5_phost_dbmi,
 			part5_phost_taxid,
@@ -1747,8 +1740,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				primary_ref,
 				primary_ref_mi,
 				host_taxid,
-				host_shtlbl,
-				host_ac,
+				tissue_ac,
+				ct_ac,
 				int_det_met,
 				int_det_met_mi,
 				xref_int1_db,
@@ -1772,8 +1765,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				part1_type_mi,
 				part1_pdm,
 				part1_pdm_mi,
-				part1_phost_shtlbl,
-				part1_phost_ac,
+				part1_tissue_ac,
+				part1_ct_ac,
 				part1_phost_db,
 				part1_phost_dbmi,
 				part1_phost_taxid,
@@ -1797,8 +1790,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				part2_type_mi,
 				part2_pdm,
 				part2_pdm_mi,
-				part2_phost_shtlbl,
-				part2_phost_ac,
+				part2_tissue_ac,
+				part2_ct_ac,
 				part2_phost_db,
 				part2_phost_dbmi,
 				part2_phost_taxid,
@@ -1822,8 +1815,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				part3_type_mi,
 				part3_pdm,
 				part3_pdm_mi,
-				part3_phost_shtlbl,
-				part3_phost_ac,
+				part3_tissue_ac,
+				part3_ct_ac,
 				part3_phost_db,
 				part3_phost_dbmi,
 				part3_phost_taxid,
@@ -1847,8 +1840,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				part4_type_mi,
 				part4_pdm,
 				part4_pdm_mi,
-				part4_phost_shtlbl,
-				part4_phost_ac,
+				part4_tissue_ac,
+				part4_ct_ac,
 				part4_phost_db,
 				part4_phost_dbmi,
 				part4_phost_taxid,
@@ -1872,8 +1865,8 @@ preflatfile4 <- unique(preflatfile3[,.(psimi,
 				part5_type_mi,
 				part5_pdm,
 				part5_pdm_mi,
-				part5_phost_shtlbl,
-				part5_phost_ac,
+				part5_tissue_ac,
+				part5_ct_ac,
 				part5_phost_db,
 				part5_phost_dbmi,
 				part5_phost_taxid,
@@ -1919,24 +1912,24 @@ preflatfile5 <- preflatfile4[,.(psimi,
 				primary_ref,
 				primary_ref_mi,
 				host_taxid,
-				host_shtlbl,
-				host_ac,
+				tissue_ac,
+				ct_ac,
 				int_det_met,
 				int_det_met_mi,
 				xref_int1,
 				xref_int1_db,
 				xref_int1_db_mi,
 				xrefs_int = gsub("^\\||\\|$","",xrefs_int),
-				part1 = paste(part1_alias,part1_alias_type,part1_alias_type_mi,part1_id,part1_id_db,part1_id_db_mi,part1_xref_ac,part1_xref_db,part1_xref_db_mi,gsub("^\\||\\|$","",part1_xrefs),part1_comment1,part1_comment1_type,part1_comment1_type_mi,part1_taxid,part1_type,part1_type_mi,part1_pdm,part1_pdm_mi,part1_phost_shtlbl,part1_phost_ac,part1_phost_db,part1_phost_dbmi,part1_phost_taxid,part1_exp_preps,gsub("\\|+","\\|",part1_feats),sep="£"),
-				part2 = paste(part2_alias,part2_alias_type,part2_alias_type_mi,part2_id,part2_id_db,part2_id_db_mi,part2_xref1,part2_xref1_db,part2_xref1_db_mi,gsub("^\\||\\|$","",part2_xrefs),part2_comment1,part2_comment1_type,part2_comment1_type_mi,part2_taxid,part2_type,part2_type_mi,part2_pdm,part2_pdm_mi,part2_phost_shtlbl,part2_phost_ac,part2_phost_db,part2_phost_dbmi,part2_phost_taxid,part2_exp_preps,gsub("\\|+","\\|",part2_feats),sep="£"),
+				part1 = paste(part1_alias,part1_alias_type,part1_alias_type_mi,part1_id,part1_id_db,part1_id_db_mi,part1_xref_ac,part1_xref_db,part1_xref_db_mi,gsub("^\\||\\|$","",part1_xrefs),part1_comment1,part1_comment1_type,part1_comment1_type_mi,part1_taxid,part1_type,part1_type_mi,part1_pdm,part1_pdm_mi,part1_tissue_ac,part1_ct_ac,part1_phost_db,part1_phost_dbmi,part1_phost_taxid,part1_exp_preps,gsub("\\|+","\\|",part1_feats),sep="£"),
+				part2 = paste(part2_alias,part2_alias_type,part2_alias_type_mi,part2_id,part2_id_db,part2_id_db_mi,part2_xref1,part2_xref1_db,part2_xref1_db_mi,gsub("^\\||\\|$","",part2_xrefs),part2_comment1,part2_comment1_type,part2_comment1_type_mi,part2_taxid,part2_type,part2_type_mi,part2_pdm,part2_pdm_mi,part2_tissue_ac,part2_ct_ac,part2_phost_db,part2_phost_dbmi,part2_phost_taxid,part2_exp_preps,gsub("\\|+","\\|",part2_feats),sep="£"),
 				part3 = ifelse(part3_alias!="",
-				               paste(part3_alias,part3_alias_type,part3_alias_type_mi,part3_id,part3_id_db,part3_id_db_mi,part3_xref_ac,part3_xref_db,part3_xref_db_mi,gsub("^\\||\\|$","",part3_xrefs),part3_comment1,part3_comment1_type,part3_comment1_type_mi,part3_taxid,part3_type,part3_type_mi,part3_pdm,part3_pdm_mi,part3_phost_shtlbl,part3_phost_ac,part3_phost_db,part3_phost_dbmi,part3_phost_taxid,part3_exp_preps,gsub("\\|+","\\|",part3_feats),sep="£"),
+				               paste(part3_alias,part3_alias_type,part3_alias_type_mi,part3_id,part3_id_db,part3_id_db_mi,part3_xref_ac,part3_xref_db,part3_xref_db_mi,gsub("^\\||\\|$","",part3_xrefs),part3_comment1,part3_comment1_type,part3_comment1_type_mi,part3_taxid,part3_type,part3_type_mi,part3_pdm,part3_pdm_mi,part3_tissue_ac,part3_ct_ac,part3_phost_db,part3_phost_dbmi,part3_phost_taxid,part3_exp_preps,gsub("\\|+","\\|",part3_feats),sep="£"),
 				               ""),
 				part4 = ifelse(part4_alias!="",
-				               paste(part4_alias,part4_alias_type,part4_alias_type_mi,part4_id,part4_id_db,part4_id_db_mi,part4_xref_ac,part4_xref_db,part4_xref_db_mi,gsub("^\\||\\|$","",part4_xrefs),part4_comment1,part4_comment1_type,part4_comment1_type_mi,part4_taxid,part4_type,part4_type_mi,part4_pdm,part4_pdm_mi,part4_phost_shtlbl,part4_phost_ac,part4_phost_db,part4_phost_dbmi,part4_phost_taxid,part4_exp_preps,gsub("\\|+","\\|",part4_feats),sep="£"),
+				               paste(part4_alias,part4_alias_type,part4_alias_type_mi,part4_id,part4_id_db,part4_id_db_mi,part4_xref_ac,part4_xref_db,part4_xref_db_mi,gsub("^\\||\\|$","",part4_xrefs),part4_comment1,part4_comment1_type,part4_comment1_type_mi,part4_taxid,part4_type,part4_type_mi,part4_pdm,part4_pdm_mi,part4_tissue_ac,part4_ct_ac,part4_phost_db,part4_phost_dbmi,part4_phost_taxid,part4_exp_preps,gsub("\\|+","\\|",part4_feats),sep="£"),
 				               ""),
 				part5 = ifelse(part5_alias!="",
-				               paste(part5_alias,part5_alias_type,part5_alias_type_mi,part5_id,part5_id_db,part5_id_db_mi,part5_xref_ac,part5_xref_db,part5_xref_db_mi,gsub("^\\||\\|$","",part5_xrefs),part5_comment1,part5_comment1_type,part5_comment1_type_mi,part5_taxid,part5_type,part5_type_mi,part5_pdm,part5_pdm_mi,part5_phost_shtlbl,part5_phost_ac,part5_phost_db,part5_phost_dbmi,part5_phost_taxid,part5_exp_preps,gsub("\\|+","\\|",part5_feats),sep="£"),
+				               paste(part5_alias,part5_alias_type,part5_alias_type_mi,part5_id,part5_id_db,part5_id_db_mi,part5_xref_ac,part5_xref_db,part5_xref_db_mi,gsub("^\\||\\|$","",part5_xrefs),part5_comment1,part5_comment1_type,part5_comment1_type_mi,part5_taxid,part5_type,part5_type_mi,part5_pdm,part5_pdm_mi,part5_tissue_ac,part5_ct_ac,part5_phost_db,part5_phost_dbmi,part5_phost_taxid,part5_exp_preps,gsub("\\|+","\\|",part5_feats),sep="£"),
 				               ""),
 			fig_leg,
 			fig_leg_type,
@@ -1973,8 +1966,8 @@ flatfile <- unique(preflatfile5[,.(psimi,
 			primary_ref,
 			primary_ref_mi,
 			host_taxid,
-			host_shtlbl,
-			host_ac,
+			tissue_ac,
+			ct_ac,
 			int_det_met,
 			int_det_met_mi,
 			xref_int1,
@@ -2067,7 +2060,12 @@ fwrite(
 
 ### Import issues
 
-    1. Interaction host is not imported
-    2. Participant host is not imported
-    3. Participant detection methods are not imported. PDM at interaction level might need to be pre-defined. 
+    1. Remark internal annotations need to be remapped: a new 'remark-internal-1' term is created and needs to be merged with the proper CV term at the database level. 
+    2. Participant detection methods are not imported. PDM at interaction level is pre-defined and fine.  
+    3. There is an issue where in some cases participant host is imported, but the drop-down menu in the editor appears empty. I tried solving it by leaving the participant host shortlabel field empty (even though XML maker shows it at red). This works for some cases, but not all. See https://wwwdev.ebi.ac.uk/intact/test/editor/experiment/EBI-26970941 for an example (turn on summary view). 
+ 
+    
+In one of the import attempts, The import got interrupted at interaction 152 (PMID:10995766) for unknown reasons. I tried importing a version of the file using just the interactions after line 152 (included), but it also failed (see files sci_10.1_3011.xml for the xml to import and scicura_map_missing.txt for the flatfile). I also tried removing only line 152 and importing the remaining lines, but it failed again (see files sci_10.2_3011.xml for the xml to import and scicura_map_missing.2.txt for the flatfile). Version sci_11_3011.xml could import the whole thing, though, so this is no longer an issue. 
+    
+
     
