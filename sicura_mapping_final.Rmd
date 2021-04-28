@@ -2062,7 +2062,7 @@ fwrite(
 
     1. Remark internal annotations need to be remapped: a new 'remark-internal-1' term is created and needs to be merged with the proper CV term at the database level. 
     2. Participant detection methods are not imported. PDM at interaction level is pre-defined and fine.  
-    3. There is an issue where in some cases participant host is imported, but the drop-down menu in the editor appears empty. I tried solving it by leaving the participant host shortlabel field empty (even though XML maker shows it at red). This works for some cases, but not all. See https://wwwdev.ebi.ac.uk/intact/test/editor/experiment/EBI-26970941 for an example (turn on summary view). 
+    3. There is an issue where in some cases participant host is imported, but the drop-down menu in the editor appears empty. I tried solving it by leaving the participant host shortlabel field empty (even though XML maker shows it at red). This works for some cases, but not all. Last attempt to fix it involves separating tissue and cell type acs and ignoring the short label. 
  
     
 In one of the import attempts, The import got interrupted at interaction 152 (PMID:10995766) for unknown reasons. I tried importing a version of the file using just the interactions after line 152 (included), but it also failed (see files sci_10.1_3011.xml for the xml to import and scicura_map_missing.txt for the flatfile). I also tried removing only line 152 and importing the remaining lines, but it failed again (see files sci_10.2_3011.xml for the xml to import and scicura_map_missing.2.txt for the flatfile). Version sci_11_3011.xml could import the whole thing, though, so this is no longer an issue. 
